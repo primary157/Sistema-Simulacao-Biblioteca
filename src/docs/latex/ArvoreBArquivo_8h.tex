@@ -1,0 +1,308 @@
+\hypertarget{ArvoreBArquivo_8h}{}\section{Referência ao ficheiro Arvore\+B\+Arquivo.\+h}
+\label{ArvoreBArquivo_8h}\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+
+
+Arquivo de Implementacao das funções do T\+AD modificado de Arvore B que faz uso de indexação por arquivos para leitura e escrita.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}arv\+B.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}C\+S\+V\+Manager.\+h\char`\"{}}\newline
+\subsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo}
+\begin{DoxyCompactList}\small\item\em Tipo Responsavel por armazenar dados na Arvore B. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ArvoreBArquivo_8h_afdc383f8992f4a960bb22998f57b6d37}\label{ArvoreBArquivo_8h_afdc383f8992f4a960bb22998f57b6d37}} 
+\#define {\bfseries MM}~80
+\end{DoxyCompactItemize}
+\subsection*{Definições de tipos}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} \hyperlink{ArvoreBArquivo_8h_a096ae64171ec1872ce6f5c6cdcd683b7}{Tipo\+Pagina\+Com\+Arquivo}
+\begin{DoxyCompactList}\small\item\em Tipo Responsavel por armazenar dados na Arvore B. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{ArvoreBArquivo_8h_a353f336f01b145cabf7fa6248bd3a634}{Arvore\+Com\+Arquivo\+\_\+\+Inicializa} (\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$Dicionario)
+\begin{DoxyCompactList}\small\item\em Função responsável por Inicializar página da Arvore B com Arquivo. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a20133ab01b524f15e346335e853564dc}{Arvore\+Com\+Arquivo\+\_\+\+Finaliza} (\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$pagina)
+\begin{DoxyCompactList}\small\item\em Função responsável por Finalizar página da Arvore B com Arquivo. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a950e9f4374c4dd4385fd1b07a41ac67b}{Abrir\+Arquivos} (\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Pagina\+Mae, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Pagina)
+\begin{DoxyCompactList}\small\item\em Função responsável por Demandar a inicialização de uma pagina e chamar as funções necessárias para isso. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a4d2782bd1d77a87811972f763f2c7634}{Arvore\+Com\+Arquivo\+\_\+\+Pesquisa} (\hyperlink{structTipoRegistro}{Tipo\+Registro} $\ast$x, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Ap)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a1dc1131646b24dbcd4f395c1d3023e89}{Arvore\+Com\+Arquivo\+\_\+\+Insere\+Na\+Pagina} (\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Ap, \hyperlink{structTipoRegistro}{Tipo\+Registro} Reg, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Ap\+Dir)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a925759938435d6d87b6345879aaa0993}{Arvore\+Com\+Arquivo\+\_\+\+Ins} (\hyperlink{structTipoRegistro}{Tipo\+Registro} Reg, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Ap, short $\ast$Cresceu, \hyperlink{structTipoRegistro}{Tipo\+Registro} $\ast$Reg\+Retorno, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$Ap\+Retorno)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a0b08d0f620e0ef84dcc61c1f486ae474}{Arvore\+Com\+Arquivo\+\_\+\+Insere} (\hyperlink{structTipoRegistro}{Tipo\+Registro} Reg, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$Ap)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a7c6d88bdfe288e8259f733329a77de52}{Arvore\+Com\+Arquivo\+\_\+\+Reconstitui} (\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Ap\+Pag, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Ap\+Pai, int Pos\+Pai, short $\ast$Diminuiu)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a555205d33f669ae0bd4e4373bdae4466}{Arvore\+Com\+Arquivo\+\_\+\+Antecessor} (\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Ap, int Ind, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$Ap\+Pai, short $\ast$Diminuiu)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_ab5dc3cf470a6badeaa0698ad5c78dbe4}{Arvore\+Com\+Arquivo\+\_\+\+Ret} (\hyperlink{arvB_8h_ab2b5af9ecc6d9f6d606e199e354c6251}{Tipo\+Chave} Ch, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$Ap, short $\ast$Diminuiu)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a620fa0ce4b97d3f4af28494a678464af}{Arvore\+Com\+Arquivo\+\_\+\+Retira} (\hyperlink{arvB_8h_ab2b5af9ecc6d9f6d606e199e354c6251}{Tipo\+Chave} Ch, \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$Ap)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a9086f5e87fd5e0aa85ede3fead23a8aa}{Arvore\+Com\+Arquivo\+\_\+\+ImprimeI} (\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$p, int nivel)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\item 
+void \hyperlink{ArvoreBArquivo_8h_a74370cdced344290b82dd2032d893bdb}{Arvore\+Com\+Arquivo\+\_\+\+Imprime} (\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Função responsável por. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ArvoreBArquivo_8h_af4476c1d09c8ed98142fdddd62fe491e}\label{ArvoreBArquivo_8h_af4476c1d09c8ed98142fdddd62fe491e}} 
+F\+I\+LE $\ast$ \hyperlink{ArvoreBArquivo_8h_af4476c1d09c8ed98142fdddd62fe491e}{global\+File}
+\begin{DoxyCompactList}\small\item\em Ponteiro para arquivo de indexação geral da arvore. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Arquivo de Implementacao das funções do T\+AD modificado de Arvore B que faz uso de indexação por arquivos para leitura e escrita. 
+
+\begin{DoxyAuthor}{Autor}
+\char`\"{}\+Victor Guerra Veloso e Luan Henrique Silva Alves\char`\"{} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+\char`\"{}13/06/2017\char`\"{}
+\end{DoxyDate}
+Nesse arquivo sobrescrevemos algumas funções básicas da implementação de Árvore B do Nivio Ziviani, dando a essa estrutura de dados a capacidade de gerenciar seus dados em arquivos de texto estruturados 
+
+\subsection{Documentação dos tipos}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a096ae64171ec1872ce6f5c6cdcd683b7}\label{ArvoreBArquivo_8h_a096ae64171ec1872ce6f5c6cdcd683b7}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Tipo\+Pagina\+Com\+Arquivo@{Tipo\+Pagina\+Com\+Arquivo}}
+\index{Tipo\+Pagina\+Com\+Arquivo@{Tipo\+Pagina\+Com\+Arquivo}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Tipo\+Pagina\+Com\+Arquivo}{TipoPaginaComArquivo}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo}  \hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo}}
+
+
+
+Tipo Responsavel por armazenar dados na Arvore B. 
+
+Esse Tipo é responsável por armazenar dados na Arvore B 
+
+\subsection{Documentação das funções}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a950e9f4374c4dd4385fd1b07a41ac67b}\label{ArvoreBArquivo_8h_a950e9f4374c4dd4385fd1b07a41ac67b}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Abrir\+Arquivos@{Abrir\+Arquivos}}
+\index{Abrir\+Arquivos@{Abrir\+Arquivos}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Abrir\+Arquivos()}{AbrirArquivos()}}
+{\footnotesize\ttfamily void Abrir\+Arquivos (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Pagina\+Mae,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Pagina }\end{DoxyParamCaption})}
+
+
+
+Função responsável por Demandar a inicialização de uma pagina e chamar as funções necessárias para isso. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em Pagina\+Mae} & Ponteiro para Pagina com arquivo referente à Pagina Mae do No que sera aberto \\
+\hline
+{\em Pagina} & Ponteiro para Pagina com arquivo referente ao No que sera aberto\\
+\hline
+\end{DoxyParams}
+Essa função irá\+:
+
+
+\begin{DoxyEnumerate}
+\item Encontrar no tudo.\+csv o arquivo da pagina de nome fname (nome da pagina pai)
+\item Encontrar no arquivo de nome fname o indice referente a pagina a ser aberta
+\item Abrir arquivo, atribuir valores as variaveis da pagina 
+\end{DoxyEnumerate}\mbox{\Hypertarget{ArvoreBArquivo_8h_a555205d33f669ae0bd4e4373bdae4466}\label{ArvoreBArquivo_8h_a555205d33f669ae0bd4e4373bdae4466}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Antecessor@{Arvore\+Com\+Arquivo\+\_\+\+Antecessor}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Antecessor@{Arvore\+Com\+Arquivo\+\_\+\+Antecessor}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Antecessor()}{ArvoreComArquivo\_Antecessor()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Antecessor (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Ap,  }\item[{int}]{Ind,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Ap\+Pai,  }\item[{short $\ast$}]{Diminuiu }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a20133ab01b524f15e346335e853564dc}\label{ArvoreBArquivo_8h_a20133ab01b524f15e346335e853564dc}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Finaliza@{Arvore\+Com\+Arquivo\+\_\+\+Finaliza}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Finaliza@{Arvore\+Com\+Arquivo\+\_\+\+Finaliza}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Finaliza()}{ArvoreComArquivo\_Finaliza()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Finaliza (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$}]{pagina }\end{DoxyParamCaption})}
+
+
+
+Função responsável por Finalizar página da Arvore B com Arquivo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em pagina} & Ponteiro para ponteiro de pagina que armazena Pagina a ser liberada\\
+\hline
+\end{DoxyParams}
+Essa função irá\+:
+
+
+\begin{DoxyEnumerate}
+\item Fechar arquivo
+\item Desalocar espaço para a pagina 
+\end{DoxyEnumerate}\mbox{\Hypertarget{ArvoreBArquivo_8h_a74370cdced344290b82dd2032d893bdb}\label{ArvoreBArquivo_8h_a74370cdced344290b82dd2032d893bdb}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Imprime@{Arvore\+Com\+Arquivo\+\_\+\+Imprime}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Imprime@{Arvore\+Com\+Arquivo\+\_\+\+Imprime}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Imprime()}{ArvoreComArquivo\_Imprime()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Imprime (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a9086f5e87fd5e0aa85ede3fead23a8aa}\label{ArvoreBArquivo_8h_a9086f5e87fd5e0aa85ede3fead23a8aa}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+ImprimeI@{Arvore\+Com\+Arquivo\+\_\+\+ImprimeI}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+ImprimeI@{Arvore\+Com\+Arquivo\+\_\+\+ImprimeI}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Imprime\+I()}{ArvoreComArquivo\_ImprimeI()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+ImprimeI (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{p,  }\item[{int}]{nivel }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a353f336f01b145cabf7fa6248bd3a634}\label{ArvoreBArquivo_8h_a353f336f01b145cabf7fa6248bd3a634}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Inicializa@{Arvore\+Com\+Arquivo\+\_\+\+Inicializa}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Inicializa@{Arvore\+Com\+Arquivo\+\_\+\+Inicializa}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Inicializa()}{ArvoreComArquivo\_Inicializa()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Inicializa (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$}]{Dicionario }\end{DoxyParamCaption})}
+
+
+
+Função responsável por Inicializar página da Arvore B com Arquivo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em pagina} & Ponteiro para ponteiro de pagina que sera responsavel por amazenar pagina alocada \\
+\hline
+{\em filename} & String do nome do arquivo a ser lido para popular a Pagina\\
+\hline
+\end{DoxyParams}
+Essa função irá\+:
+
+
+\begin{DoxyEnumerate}
+\item Alocar espaço para a pagina
+\item Abrir arquivo
+\item Inicializar os registros de acordo com o arquivo 
+\end{DoxyEnumerate}\mbox{\Hypertarget{ArvoreBArquivo_8h_a925759938435d6d87b6345879aaa0993}\label{ArvoreBArquivo_8h_a925759938435d6d87b6345879aaa0993}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Ins@{Arvore\+Com\+Arquivo\+\_\+\+Ins}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Ins@{Arvore\+Com\+Arquivo\+\_\+\+Ins}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Ins()}{ArvoreComArquivo\_Ins()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Ins (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoRegistro}{Tipo\+Registro}}]{Reg,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Ap,  }\item[{short $\ast$}]{Cresceu,  }\item[{\hyperlink{structTipoRegistro}{Tipo\+Registro} $\ast$}]{Reg\+Retorno,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$}]{Ap\+Retorno }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a0b08d0f620e0ef84dcc61c1f486ae474}\label{ArvoreBArquivo_8h_a0b08d0f620e0ef84dcc61c1f486ae474}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Insere@{Arvore\+Com\+Arquivo\+\_\+\+Insere}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Insere@{Arvore\+Com\+Arquivo\+\_\+\+Insere}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Insere()}{ArvoreComArquivo\_Insere()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Insere (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoRegistro}{Tipo\+Registro}}]{Reg,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$}]{Ap }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a1dc1131646b24dbcd4f395c1d3023e89}\label{ArvoreBArquivo_8h_a1dc1131646b24dbcd4f395c1d3023e89}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Insere\+Na\+Pagina@{Arvore\+Com\+Arquivo\+\_\+\+Insere\+Na\+Pagina}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Insere\+Na\+Pagina@{Arvore\+Com\+Arquivo\+\_\+\+Insere\+Na\+Pagina}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Insere\+Na\+Pagina()}{ArvoreComArquivo\_InsereNaPagina()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Insere\+Na\+Pagina (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Ap,  }\item[{\hyperlink{structTipoRegistro}{Tipo\+Registro}}]{Reg,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Ap\+Dir }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a4d2782bd1d77a87811972f763f2c7634}\label{ArvoreBArquivo_8h_a4d2782bd1d77a87811972f763f2c7634}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Pesquisa@{Arvore\+Com\+Arquivo\+\_\+\+Pesquisa}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Pesquisa@{Arvore\+Com\+Arquivo\+\_\+\+Pesquisa}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Pesquisa()}{ArvoreComArquivo\_Pesquisa()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Pesquisa (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoRegistro}{Tipo\+Registro} $\ast$}]{x,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Ap }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a7c6d88bdfe288e8259f733329a77de52}\label{ArvoreBArquivo_8h_a7c6d88bdfe288e8259f733329a77de52}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Reconstitui@{Arvore\+Com\+Arquivo\+\_\+\+Reconstitui}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Reconstitui@{Arvore\+Com\+Arquivo\+\_\+\+Reconstitui}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Reconstitui()}{ArvoreComArquivo\_Reconstitui()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Reconstitui (\begin{DoxyParamCaption}\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Ap\+Pag,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$}]{Ap\+Pai,  }\item[{int}]{Pos\+Pai,  }\item[{short $\ast$}]{Diminuiu }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_ab5dc3cf470a6badeaa0698ad5c78dbe4}\label{ArvoreBArquivo_8h_ab5dc3cf470a6badeaa0698ad5c78dbe4}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Ret@{Arvore\+Com\+Arquivo\+\_\+\+Ret}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Ret@{Arvore\+Com\+Arquivo\+\_\+\+Ret}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Ret()}{ArvoreComArquivo\_Ret()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Ret (\begin{DoxyParamCaption}\item[{\hyperlink{arvB_8h_ab2b5af9ecc6d9f6d606e199e354c6251}{Tipo\+Chave}}]{Ch,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$}]{Ap,  }\item[{short $\ast$}]{Diminuiu }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ArvoreBArquivo_8h_a620fa0ce4b97d3f4af28494a678464af}\label{ArvoreBArquivo_8h_a620fa0ce4b97d3f4af28494a678464af}} 
+\index{Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}!Arvore\+Com\+Arquivo\+\_\+\+Retira@{Arvore\+Com\+Arquivo\+\_\+\+Retira}}
+\index{Arvore\+Com\+Arquivo\+\_\+\+Retira@{Arvore\+Com\+Arquivo\+\_\+\+Retira}!Arvore\+B\+Arquivo.\+h@{Arvore\+B\+Arquivo.\+h}}
+\subsubsection{\texorpdfstring{Arvore\+Com\+Arquivo\+\_\+\+Retira()}{ArvoreComArquivo\_Retira()}}
+{\footnotesize\ttfamily void Arvore\+Com\+Arquivo\+\_\+\+Retira (\begin{DoxyParamCaption}\item[{\hyperlink{arvB_8h_ab2b5af9ecc6d9f6d606e199e354c6251}{Tipo\+Chave}}]{Ch,  }\item[{\hyperlink{structTipoPaginaComArquivo}{Tipo\+Pagina\+Com\+Arquivo} $\ast$$\ast$}]{Ap }\end{DoxyParamCaption})}
+
+
+
+Função responsável por. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em } & \\
+\hline
+\end{DoxyParams}

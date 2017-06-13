@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sistema Biblioteca: Código-Fonte de CSVManager.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Sistema Biblioteca
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Aqui Apresento um resumo do que é o Sistema Biblioteca</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CSVManager.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="CSVManager_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef CSVMANAGER_H_INCLUDED</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define CSVMANAGER_H_INCLUDED</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define CURRENT_LINE 0</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span> * string;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">string</span> * stringArray;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">typedef</span> stringArray * linesOfStringArrays; </div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">int</span> <a class="code" href="CSVManager_8h.html#a74e268abe41b7721ecc77ed14d06c471">openFile</a>(FILE **fptr, <span class="keywordtype">string</span> fname);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;FILE* <a class="code" href="CSVManager_8h.html#a75e8d528dd0db4cfdbae9369fa4d179a">findPosAndStoreNextText</a>(FILE *fptr,<span class="keywordtype">int</span> line, <span class="keywordtype">string</span> *remainingText);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="CSVManager_8h.html#a0386a288dad38b6e3ce3c212b7fdd3dc">addMatchToLine</a>(FILE *fptr,<span class="keywordtype">string</span> match, <span class="keywordtype">int</span> line);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> <a class="code" href="CSVManager_8h.html#a974e86e4be64de73738e12812eb85cda">changeLineMatches</a>(FILE *fptr,stringArray matches, <span class="keywordtype">int</span> line);</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">int</span> <a class="code" href="CSVManager_8h.html#a8275e923281ad25c0515361beaa4a060">getNextMatch</a>(FILE *fptr,<span class="keywordtype">string</span> *match);</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="CSVManager_8h.html#aa99cae702234c80fcbddcf081e984bef">getNextLine</a>(FILE *fptr, stringArray *matches);</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> <a class="code" href="CSVManager_8h.html#a944a96f52ebe175edcbbaee573786a84">getRemainingMatches</a>(FILE *fptr, linesOfStringArrays *matches);</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> <a class="code" href="CSVManager_8h.html#ad6b41771b1fe03825100b88aee1bc3ed">getAllMatches</a>(FILE *fptr, stringArray **matches);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="CSVManager_8h_html_a944a96f52ebe175edcbbaee573786a84"><div class="ttname"><a href="CSVManager_8h.html#a944a96f52ebe175edcbbaee573786a84">getRemainingMatches</a></div><div class="ttdeci">void getRemainingMatches(FILE *fptr, linesOfStringArrays *matches)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> CSVManager.c:176</div></div>
+<div class="ttc" id="CSVManager_8h_html_aa99cae702234c80fcbddcf081e984bef"><div class="ttname"><a href="CSVManager_8h.html#aa99cae702234c80fcbddcf081e984bef">getNextLine</a></div><div class="ttdeci">void getNextLine(FILE *fptr, stringArray *matches)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> CSVManager.c:154</div></div>
+<div class="ttc" id="CSVManager_8h_html_a0386a288dad38b6e3ce3c212b7fdd3dc"><div class="ttname"><a href="CSVManager_8h.html#a0386a288dad38b6e3ce3c212b7fdd3dc">addMatchToLine</a></div><div class="ttdeci">void addMatchToLine(FILE *fptr, string match, int line)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> CSVManager.c:72</div></div>
+<div class="ttc" id="CSVManager_8h_html_ad6b41771b1fe03825100b88aee1bc3ed"><div class="ttname"><a href="CSVManager_8h.html#ad6b41771b1fe03825100b88aee1bc3ed">getAllMatches</a></div><div class="ttdeci">void getAllMatches(FILE *fptr, stringArray **matches)</div><div class="ttdoc">Função responsável por. </div></div>
+<div class="ttc" id="CSVManager_8h_html_a74e268abe41b7721ecc77ed14d06c471"><div class="ttname"><a href="CSVManager_8h.html#a74e268abe41b7721ecc77ed14d06c471">openFile</a></div><div class="ttdeci">int openFile(FILE **fptr, string fname)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> CSVManager.c:2</div></div>
+<div class="ttc" id="CSVManager_8h_html_a75e8d528dd0db4cfdbae9369fa4d179a"><div class="ttname"><a href="CSVManager_8h.html#a75e8d528dd0db4cfdbae9369fa4d179a">findPosAndStoreNextText</a></div><div class="ttdeci">FILE * findPosAndStoreNextText(FILE *fptr, int line, string *remainingText)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> CSVManager.c:30</div></div>
+<div class="ttc" id="CSVManager_8h_html_a8275e923281ad25c0515361beaa4a060"><div class="ttname"><a href="CSVManager_8h.html#a8275e923281ad25c0515361beaa4a060">getNextMatch</a></div><div class="ttdeci">int getNextMatch(FILE *fptr, string *match)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> CSVManager.c:129</div></div>
+<div class="ttc" id="CSVManager_8h_html_a974e86e4be64de73738e12812eb85cda"><div class="ttname"><a href="CSVManager_8h.html#a974e86e4be64de73738e12812eb85cda">changeLineMatches</a></div><div class="ttdeci">void changeLineMatches(FILE *fptr, stringArray matches, int line)</div><div class="ttdoc">Função responsável por. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

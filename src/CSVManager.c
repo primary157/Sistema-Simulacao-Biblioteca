@@ -2,7 +2,32 @@
 int openFile(FILE **fptr, string fname){
 	return (((*fptr) = fopen(fname,"rb+")) != NULL);
 }
-FILE* findPosAndStoreNextText(FILE *fptr,int line, string *remainingText){
+/**
+ * @brief Função responsável por 
+ *
+ * @param 
+ *
+ * Essa função irá:
+ *
+ * 1. 
+ * 2. 
+ */
+int findName(char* fname,int* i_do_pai){
+	/*
+	 * Encontrar no tudo.csv o arquivo da pagina de nome fname
+	 */
+}
+/**
+ * @brief Função responsável por 
+ *
+ * @param 
+ *
+ * Essa função irá:
+ *
+ * 1. 
+ * 2. 
+ */
+FILE *findPosAndStoreNextText(FILE *fptr,int line, string *remainingText){
 	char c;
 	size_t cur_position, eof_position;
 	int i;
@@ -16,7 +41,7 @@ FILE* findPosAndStoreNextText(FILE *fptr,int line, string *remainingText){
 		}
 	}
 	else{
-		fseek(fptr, 0, SEEK_END);
+		fseek(fptr, -2, SEEK_END);
 		for (i = 0; i > (line+1); i--) {	//Se line == -1 entao encontrar fim da ultima linha, ou seja, fim do arquivo. Se line < -1 entao encontrar (line+1) \n's 
 			while((c = fgetc(fptr)) != '\n') fseek(fptr,-2,SEEK_CUR);
 		}
@@ -34,6 +59,16 @@ FILE* findPosAndStoreNextText(FILE *fptr,int line, string *remainingText){
 	return fptr;
 
 }
+/**
+ * @brief Função responsável por 
+ *
+ * @param 
+ *
+ * Essa função irá:
+ *
+ * 1. 
+ * 2. 
+ */
 void addMatchToLine(FILE *fptr,string match, int line){
 	string remainingText;
 	fptr = findPosAndStoreNextText(fptr,line, &remainingText);
@@ -43,6 +78,16 @@ void addMatchToLine(FILE *fptr,string match, int line){
 	fputs(remainingText,fptr);
 	free(remainingText);
 }
+/**
+ * @brief Função responsável por 
+ *
+ * @param 
+ *
+ * Essa função irá:
+ *
+ * 1. 
+ * 2. 
+ */
 void changeLineMatches(FILE *fptr,stringArray matches, int n_matches, int line){
 	char c;
 	string remainingText;
@@ -71,14 +116,23 @@ void changeLineMatches(FILE *fptr,stringArray matches, int n_matches, int line){
 	fputs(remainingText,fptr);
 	free(remainingText);
 }
+/**
+ * @brief Função responsável por 
+ *
+ * @param 
+ *
+ * Essa função irá:
+ *
+ * 1. 
+ * 2. 
+ */
 int getNextMatch(FILE *fptr,string *match){
 	char buffer[512];
 	char c;
 	int i = 0;
 	while((c = fgetc(fptr)) != ';'){	//Procura quebra de Match
 		if(c == '\n' || c == '\0'){	//Se a leitura comeca ou com \n ou com \0 eh porque acabaram os matches nessa linha =========> Talvez seja melhor trocar c == '\0' por feof(fptr)
-			fseek(fptr,-1,SEEK_CUR);	//volta o ponteiro fptr para a posicao de quebra de linha ou de fim de arquivo
-			return 0;	
+			return 0;		//Sinaliza fim de linha e que nao há match lido
 		}
 		buffer[i] = c;			//concatena caracter diferente de ';' lido na string buffer
 		i++;
@@ -87,6 +141,16 @@ int getNextMatch(FILE *fptr,string *match){
 	strcpy(*match,buffer);					//Copia valor de buffer para match
 	return 1;
 }
+/**
+ * @brief Função responsável por 
+ *
+ * @param 
+ *
+ * Essa função irá:
+ *
+ * 1. 
+ * 2. 
+ */
 void getNextLine(FILE *fptr, stringArray *matches){
 	string buffer[512];
 	int i = 0;
@@ -99,10 +163,21 @@ void getNextLine(FILE *fptr, stringArray *matches){
 		i--;
 	}
 }
+/**
+ * @brief Função responsável por 
+ *
+ * @param 
+ *
+ * Essa função irá:
+ *
+ * 1. 
+ * 2. 
+ */
 void getRemainingMatches(FILE *fptr, linesOfStringArrays *linesOfMatches){
 	int i = 0, j = 0;
 	stringArray buffer[512];
 	while(getNextMatch(fptr,&buffer[i][j])) j++;
+	i++;
 	while(!feof(fptr)){
 		getNextLine(fptr,&buffer[i]);
 		i++;
@@ -114,6 +189,16 @@ void getRemainingMatches(FILE *fptr, linesOfStringArrays *linesOfMatches){
 		i--;
 	}
 }
+/**
+ * @brief Função responsável por 
+ *
+ * @param 
+ *
+ * Essa função irá:
+ *
+ * 1. 
+ * 2. 
+ */
 void getAllMatches(FILE *fptr, linesOfStringArrays *matches){
 	rewind(fptr);
 	getRemainingMatches(fptr,matches);

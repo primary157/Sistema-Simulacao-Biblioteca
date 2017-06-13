@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sistema Biblioteca: Referência ao ficheiro CSVManager.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Sistema Biblioteca
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Aqui Apresento um resumo do que é o Sistema Biblioteca</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Definições de tipos</a> &#124;
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência ao ficheiro CSVManager.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Arquivo de Implementacao das funções do TAD modificado de Arvore B que faz uso de indexação por arquivos para leitura e escrita.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+</div>
+<p><a href="CSVManager_8h_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a351b37224b692b7db4a88f3b5c41a8bf"><td class="memItemLeft" align="right" valign="top"><a id="a351b37224b692b7db4a88f3b5c41a8bf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CURRENT_LINE</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a351b37224b692b7db4a88f3b5c41a8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Definições de tipos</h2></td></tr>
+<tr class="memitem:a4505c08c065b48840a30eedd9845cce2"><td class="memItemLeft" align="right" valign="top"><a id="a4505c08c065b48840a30eedd9845cce2"></a>
+typedef char *&#160;</td><td class="memItemRight" valign="bottom"><b>string</b></td></tr>
+<tr class="separator:a4505c08c065b48840a30eedd9845cce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87fe51c63935755b8022cefe500ffc66"><td class="memItemLeft" align="right" valign="top"><a id="a87fe51c63935755b8022cefe500ffc66"></a>
+typedef string *&#160;</td><td class="memItemRight" valign="bottom"><b>stringArray</b></td></tr>
+<tr class="separator:a87fe51c63935755b8022cefe500ffc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b1fe84e3777ace3d6210d2ab3c97df"><td class="memItemLeft" align="right" valign="top"><a id="ab2b1fe84e3777ace3d6210d2ab3c97df"></a>
+typedef stringArray *&#160;</td><td class="memItemRight" valign="bottom"><b>linesOfStringArrays</b></td></tr>
+<tr class="separator:ab2b1fe84e3777ace3d6210d2ab3c97df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a74e268abe41b7721ecc77ed14d06c471"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CSVManager_8h.html#a74e268abe41b7721ecc77ed14d06c471">openFile</a> (FILE **fptr, string fname)</td></tr>
+<tr class="memdesc:a74e268abe41b7721ecc77ed14d06c471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por.  <a href="#a74e268abe41b7721ecc77ed14d06c471">Mais...</a><br /></td></tr>
+<tr class="separator:a74e268abe41b7721ecc77ed14d06c471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e8d528dd0db4cfdbae9369fa4d179a"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CSVManager_8h.html#a75e8d528dd0db4cfdbae9369fa4d179a">findPosAndStoreNextText</a> (FILE *fptr, int line, string *remainingText)</td></tr>
+<tr class="memdesc:a75e8d528dd0db4cfdbae9369fa4d179a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por.  <a href="#a75e8d528dd0db4cfdbae9369fa4d179a">Mais...</a><br /></td></tr>
+<tr class="separator:a75e8d528dd0db4cfdbae9369fa4d179a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0386a288dad38b6e3ce3c212b7fdd3dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CSVManager_8h.html#a0386a288dad38b6e3ce3c212b7fdd3dc">addMatchToLine</a> (FILE *fptr, string match, int line)</td></tr>
+<tr class="memdesc:a0386a288dad38b6e3ce3c212b7fdd3dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por.  <a href="#a0386a288dad38b6e3ce3c212b7fdd3dc">Mais...</a><br /></td></tr>
+<tr class="separator:a0386a288dad38b6e3ce3c212b7fdd3dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a974e86e4be64de73738e12812eb85cda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CSVManager_8h.html#a974e86e4be64de73738e12812eb85cda">changeLineMatches</a> (FILE *fptr, stringArray matches, int line)</td></tr>
+<tr class="memdesc:a974e86e4be64de73738e12812eb85cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por.  <a href="#a974e86e4be64de73738e12812eb85cda">Mais...</a><br /></td></tr>
+<tr class="separator:a974e86e4be64de73738e12812eb85cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8275e923281ad25c0515361beaa4a060"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CSVManager_8h.html#a8275e923281ad25c0515361beaa4a060">getNextMatch</a> (FILE *fptr, string *match)</td></tr>
+<tr class="memdesc:a8275e923281ad25c0515361beaa4a060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por.  <a href="#a8275e923281ad25c0515361beaa4a060">Mais...</a><br /></td></tr>
+<tr class="separator:a8275e923281ad25c0515361beaa4a060"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa99cae702234c80fcbddcf081e984bef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CSVManager_8h.html#aa99cae702234c80fcbddcf081e984bef">getNextLine</a> (FILE *fptr, stringArray *matches)</td></tr>
+<tr class="memdesc:aa99cae702234c80fcbddcf081e984bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por.  <a href="#aa99cae702234c80fcbddcf081e984bef">Mais...</a><br /></td></tr>
+<tr class="separator:aa99cae702234c80fcbddcf081e984bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a944a96f52ebe175edcbbaee573786a84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CSVManager_8h.html#a944a96f52ebe175edcbbaee573786a84">getRemainingMatches</a> (FILE *fptr, linesOfStringArrays *matches)</td></tr>
+<tr class="memdesc:a944a96f52ebe175edcbbaee573786a84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por.  <a href="#a944a96f52ebe175edcbbaee573786a84">Mais...</a><br /></td></tr>
+<tr class="separator:a944a96f52ebe175edcbbaee573786a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b41771b1fe03825100b88aee1bc3ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CSVManager_8h.html#ad6b41771b1fe03825100b88aee1bc3ed">getAllMatches</a> (FILE *fptr, stringArray **matches)</td></tr>
+<tr class="memdesc:ad6b41771b1fe03825100b88aee1bc3ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por.  <a href="#ad6b41771b1fe03825100b88aee1bc3ed">Mais...</a><br /></td></tr>
+<tr class="separator:ad6b41771b1fe03825100b88aee1bc3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Arquivo de Implementacao das funções do TAD modificado de Arvore B que faz uso de indexação por arquivos para leitura e escrita. </p>
+<dl class="section author"><dt>Autor</dt><dd>"Victor Guerra Veloso e Luan Henrique Silva Alves" </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>"13/06/2017"</dd></dl>
+<p>Nesse arquivo sobrescrevemos algumas funções básicas da implementação de Árvore B do Nivio Ziviani, dando a essa estrutura de dados a capacidade de gerenciar seus dados em arquivos de texto estruturados</p>
+<dl class="section copyright"><dt>Copyright</dt><dd><a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Public License 3.0</a> </dd></dl>
+</div><h2 class="groupheader">Documentação das funções</h2>
+<a id="a0386a288dad38b6e3ce3c212b7fdd3dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0386a288dad38b6e3ce3c212b7fdd3dc">&#9670;&nbsp;</a></span>addMatchToLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addMatchToLine </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>match</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a974e86e4be64de73738e12812eb85cda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a974e86e4be64de73738e12812eb85cda">&#9670;&nbsp;</a></span>changeLineMatches()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changeLineMatches </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">stringArray&#160;</td>
+          <td class="paramname"><em>matches</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a75e8d528dd0db4cfdbae9369fa4d179a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75e8d528dd0db4cfdbae9369fa4d179a">&#9670;&nbsp;</a></span>findPosAndStoreNextText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* findPosAndStoreNextText </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string *&#160;</td>
+          <td class="paramname"><em>remainingText</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad6b41771b1fe03825100b88aee1bc3ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b41771b1fe03825100b88aee1bc3ed">&#9670;&nbsp;</a></span>getAllMatches()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getAllMatches </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">stringArray **&#160;</td>
+          <td class="paramname"><em>matches</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa99cae702234c80fcbddcf081e984bef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa99cae702234c80fcbddcf081e984bef">&#9670;&nbsp;</a></span>getNextLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getNextLine </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">stringArray *&#160;</td>
+          <td class="paramname"><em>matches</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8275e923281ad25c0515361beaa4a060"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8275e923281ad25c0515361beaa4a060">&#9670;&nbsp;</a></span>getNextMatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getNextMatch </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string *&#160;</td>
+          <td class="paramname"><em>match</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a944a96f52ebe175edcbbaee573786a84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a944a96f52ebe175edcbbaee573786a84">&#9670;&nbsp;</a></span>getRemainingMatches()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getRemainingMatches </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">linesOfStringArrays *&#160;</td>
+          <td class="paramname"><em>linesOfMatches</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a74e268abe41b7721ecc77ed14d06c471"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74e268abe41b7721ecc77ed14d06c471">&#9670;&nbsp;</a></span>openFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int openFile </td>
+          <td>(</td>
+          <td class="paramtype">FILE **&#160;</td>
+          <td class="paramname"><em>fptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>fname</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

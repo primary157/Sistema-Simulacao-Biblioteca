@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sistema Biblioteca: Código-Fonte de arvB.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Sistema Biblioteca
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Aqui Apresento um resumo do que é o Sistema Biblioteca</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">arvB.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="arvB_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define M 2 // 2, 20 e 40. </span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define MM  (M * 2)</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define FALSE 0</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define TRUE  1</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structData.html">   24</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">char</span> *nome_do_livro;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">char</span> *nome_do_autor;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numero_de_exemplares;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}<a class="code" href="structData.html">Data</a>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="arvB_8h.html#ab2b5af9ecc6d9f6d606e199e354c6251">   33</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">long</span> <a class="code" href="arvB_8h.html#ab2b5af9ecc6d9f6d606e199e354c6251">TipoChave</a>;</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structTipoRegistro.html">   40</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structTipoRegistro.html">TipoRegistro</a> </div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="arvB_8h.html#ab2b5af9ecc6d9f6d606e199e354c6251">TipoChave</a> Chave;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="structData.html">Data</a> information;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <a class="code" href="arvB_8h.html#a41d8ecd1331fd371e1b7ef3ec49d1fb0">TipoRegistro</a>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="arvB_8h.html#a20f89be0a510089bb26e2691d3223d21">   50</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structTipoPagina.html">TipoPagina</a>* <a class="code" href="arvB_8h.html#a20f89be0a510089bb26e2691d3223d21">TipoApontador</a>;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structTipoPagina.html">   58</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structTipoPagina.html">TipoPagina</a> </div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div><div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structTipoPagina.html#ada23d982818790ac83a647542eef0be3">   60</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structTipoPagina.html#ada23d982818790ac83a647542eef0be3">n</a>;                    </div><div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structTipoPagina.html#a4bef5f8f437494c1a3a8b2c3be98c30d">   61</a></span>&#160;    <a class="code" href="structTipoRegistro.html">TipoRegistro</a> r[MM];         </div><div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structTipoPagina.html#a86205b5673504a179f26c606ac7221b8">   62</a></span>&#160;    TipoApontador p[MM + 1];    </div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <a class="code" href="arvB_8h.html#aaa5cb5497435b6f16b9b0993809a0946">TipoPagina</a>;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a723b9c477e3928c22aead5ac1062a9bf">InicializaRegistro</a>(<a class="code" href="structTipoRegistro.html">TipoRegistro</a> *reg);</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a9d87c5718287058395599f33ce6c20b8">InicializaArvore</a>(TipoApontador *Dicionario);</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a7cd4652fb1811082d63f7e426e205000">Pesquisa</a>(<a class="code" href="structTipoRegistro.html">TipoRegistro</a> *x, TipoApontador Ap);</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a5635754faef4cbcef57a509222d5c5de">InsereNaPagina</a>(TipoApontador Ap,<a class="code" href="structTipoRegistro.html">TipoRegistro</a> Reg, TipoApontador ApDir);</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a483c519fabd9a1087642871c11abd43c">Ins</a>(<a class="code" href="structTipoRegistro.html">TipoRegistro</a> Reg, TipoApontador Ap, <span class="keywordtype">short</span> *Cresceu, <a class="code" href="structTipoRegistro.html">TipoRegistro</a> *RegRetorno,  TipoApontador *ApRetorno);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a8edc7900d6f345618d13825a292d6685">Insere</a>(<a class="code" href="structTipoRegistro.html">TipoRegistro</a> Reg, TipoApontador *Ap);</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a1f6e6f97fcbc2ad07ab9d49d8a056c89">Reconstitui</a>(TipoApontador ApPag, TipoApontador ApPai,<span class="keywordtype">int</span> PosPai, <span class="keywordtype">short</span> *Diminuiu);</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a149035602ceee4e380ca5437aec898db">Antecessor</a>(TipoApontador Ap, <span class="keywordtype">int</span> Ind, TipoApontador ApPai, <span class="keywordtype">short</span> *Diminuiu);</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a41f32b081fcc8dbe752a5900f64ca5a6">Ret</a>(<a class="code" href="arvB_8h.html#ab2b5af9ecc6d9f6d606e199e354c6251">TipoChave</a> Ch, TipoApontador *Ap, <span class="keywordtype">short</span> *Diminuiu);</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a77e0605c740f5d2bf84e91dcb2802344">Retira</a>(<a class="code" href="arvB_8h.html#ab2b5af9ecc6d9f6d606e199e354c6251">TipoChave</a> Ch, TipoApontador *Ap);</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#ab11b543d07aad2cc8afcead5eb7140dd">ImprimeI</a>(TipoApontador p, <span class="keywordtype">int</span> nivel);</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#adc397c248f25c4a3e17de2163c78fd76">Imprime</a>(TipoApontador p);</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#afe1842df43312d9119138a2951628493">TestaI</a>(TipoApontador p, <span class="keywordtype">int</span> pai, <span class="keywordtype">short</span> direita);</div><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="keywordtype">void</span> <a class="code" href="arvB_8h.html#a9841cc02c5727ac5c3e2f2dc14620ae9">Testa</a>(TipoApontador p);</div><div class="ttc" id="arvB_8h_html_a7cd4652fb1811082d63f7e426e205000"><div class="ttname"><a href="arvB_8h.html#a7cd4652fb1811082d63f7e426e205000">Pesquisa</a></div><div class="ttdeci">void Pesquisa(TipoRegistro *x, TipoApontador Ap)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:8</div></div>
+<div class="ttc" id="arvB_8h_html_aaa5cb5497435b6f16b9b0993809a0946"><div class="ttname"><a href="arvB_8h.html#aaa5cb5497435b6f16b9b0993809a0946">TipoPagina</a></div><div class="ttdeci">struct TipoPagina TipoPagina</div><div class="ttdoc">Principal TAD da Arvore B. </div></div>
+<div class="ttc" id="arvB_8h_html_a5635754faef4cbcef57a509222d5c5de"><div class="ttname"><a href="arvB_8h.html#a5635754faef4cbcef57a509222d5c5de">InsereNaPagina</a></div><div class="ttdeci">void InsereNaPagina(TipoApontador Ap, TipoRegistro Reg, TipoApontador ApDir)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:25</div></div>
+<div class="ttc" id="arvB_8h_html_afe1842df43312d9119138a2951628493"><div class="ttname"><a href="arvB_8h.html#afe1842df43312d9119138a2951628493">TestaI</a></div><div class="ttdeci">void TestaI(TipoApontador p, int pai, short direita)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:246</div></div>
+<div class="ttc" id="arvB_8h_html_a149035602ceee4e380ca5437aec898db"><div class="ttname"><a href="arvB_8h.html#a149035602ceee4e380ca5437aec898db">Antecessor</a></div><div class="ttdeci">void Antecessor(TipoApontador Ap, int Ind, TipoApontador ApPai, short *Diminuiu)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:169</div></div>
+<div class="ttc" id="arvB_8h_html_a9841cc02c5727ac5c3e2f2dc14620ae9"><div class="ttname"><a href="arvB_8h.html#a9841cc02c5727ac5c3e2f2dc14620ae9">Testa</a></div><div class="ttdeci">void Testa(TipoApontador p)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:268</div></div>
+<div class="ttc" id="structData_html"><div class="ttname"><a href="structData.html">Data</a></div><div class="ttdoc">Tipo que armazena dados que não sejam a chave no registro da Arvore B. </div><div class="ttdef"><b>Definition:</b> arvB.h:24</div></div>
+<div class="ttc" id="arvB_8h_html_a9d87c5718287058395599f33ce6c20b8"><div class="ttname"><a href="arvB_8h.html#a9d87c5718287058395599f33ce6c20b8">InicializaArvore</a></div><div class="ttdeci">void InicializaArvore(TipoApontador *Dicionario)</div><div class="ttdoc">Função responsável por Inicializar uma página de uma árvore. </div></div>
+<div class="ttc" id="arvB_8h_html_a77e0605c740f5d2bf84e91dcb2802344"><div class="ttname"><a href="arvB_8h.html#a77e0605c740f5d2bf84e91dcb2802344">Retira</a></div><div class="ttdeci">void Retira(TipoChave Ch, TipoApontador *Ap)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:215</div></div>
+<div class="ttc" id="structTipoRegistro_html"><div class="ttname"><a href="structTipoRegistro.html">TipoRegistro</a></div><div class="ttdoc">Tipo contido nas páginas da arvore B. </div><div class="ttdef"><b>Definition:</b> arvB.h:40</div></div>
+<div class="ttc" id="arvB_8h_html_a483c519fabd9a1087642871c11abd43c"><div class="ttname"><a href="arvB_8h.html#a483c519fabd9a1087642871c11abd43c">Ins</a></div><div class="ttdeci">void Ins(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegistro *RegRetorno, TipoApontador *ApRetorno)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:46</div></div>
+<div class="ttc" id="arvB_8h_html_a1f6e6f97fcbc2ad07ab9d49d8a056c89"><div class="ttname"><a href="arvB_8h.html#a1f6e6f97fcbc2ad07ab9d49d8a056c89">Reconstitui</a></div><div class="ttdeci">void Reconstitui(TipoApontador ApPag, TipoApontador ApPai, int PosPai, short *Diminuiu)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:114</div></div>
+<div class="ttc" id="arvB_8h_html_a723b9c477e3928c22aead5ac1062a9bf"><div class="ttname"><a href="arvB_8h.html#a723b9c477e3928c22aead5ac1062a9bf">InicializaRegistro</a></div><div class="ttdeci">void InicializaRegistro(TipoRegistro *reg)</div><div class="ttdoc">Função responsável por Inicializar um Registro. </div></div>
+<div class="ttc" id="arvB_8h_html_adc397c248f25c4a3e17de2163c78fd76"><div class="ttname"><a href="arvB_8h.html#adc397c248f25c4a3e17de2163c78fd76">Imprime</a></div><div class="ttdeci">void Imprime(TipoApontador p)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:240</div></div>
+<div class="ttc" id="structTipoPagina_html"><div class="ttname"><a href="structTipoPagina.html">TipoPagina</a></div><div class="ttdoc">Principal TAD da Arvore B. </div><div class="ttdef"><b>Definition:</b> arvB.h:58</div></div>
+<div class="ttc" id="arvB_8h_html_a41f32b081fcc8dbe752a5900f64ca5a6"><div class="ttname"><a href="arvB_8h.html#a41f32b081fcc8dbe752a5900f64ca5a6">Ret</a></div><div class="ttdeci">void Ret(TipoChave Ch, TipoApontador *Ap, short *Diminuiu)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:183</div></div>
+<div class="ttc" id="structTipoPagina_html_ada23d982818790ac83a647542eef0be3"><div class="ttname"><a href="structTipoPagina.html#ada23d982818790ac83a647542eef0be3">TipoPagina::n</a></div><div class="ttdeci">short n</div><div class="ttdoc">numero de registros contidos na pagina </div><div class="ttdef"><b>Definition:</b> arvB.h:60</div></div>
+<div class="ttc" id="arvB_8h_html_a41d8ecd1331fd371e1b7ef3ec49d1fb0"><div class="ttname"><a href="arvB_8h.html#a41d8ecd1331fd371e1b7ef3ec49d1fb0">TipoRegistro</a></div><div class="ttdeci">struct TipoRegistro TipoRegistro</div><div class="ttdoc">Tipo contido nas páginas da arvore B. </div></div>
+<div class="ttc" id="arvB_8h_html_a20f89be0a510089bb26e2691d3223d21"><div class="ttname"><a href="arvB_8h.html#a20f89be0a510089bb26e2691d3223d21">TipoApontador</a></div><div class="ttdeci">struct TipoPagina * TipoApontador</div><div class="ttdoc">Definição do TipoApontador como sendo um ponteiro para struct TipoPagina. </div><div class="ttdef"><b>Definition:</b> arvB.h:50</div></div>
+<div class="ttc" id="arvB_8h_html_ab11b543d07aad2cc8afcead5eb7140dd"><div class="ttname"><a href="arvB_8h.html#ab11b543d07aad2cc8afcead5eb7140dd">ImprimeI</a></div><div class="ttdeci">void ImprimeI(TipoApontador p, int nivel)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:227</div></div>
+<div class="ttc" id="arvB_8h_html_a8edc7900d6f345618d13825a292d6685"><div class="ttname"><a href="arvB_8h.html#a8edc7900d6f345618d13825a292d6685">Insere</a></div><div class="ttdeci">void Insere(TipoRegistro Reg, TipoApontador *Ap)</div><div class="ttdoc">Função responsável por. </div><div class="ttdef"><b>Definition:</b> arvB.c:97</div></div>
+<div class="ttc" id="arvB_8h_html_ab2b5af9ecc6d9f6d606e199e354c6251"><div class="ttname"><a href="arvB_8h.html#ab2b5af9ecc6d9f6d606e199e354c6251">TipoChave</a></div><div class="ttdeci">long TipoChave</div><div class="ttdoc">Definição do Tipo Chave usado na indexação do TAD Arvore B. </div><div class="ttdef"><b>Definition:</b> arvB.h:33</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
