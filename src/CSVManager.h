@@ -20,91 +20,67 @@ typedef char * string;
 typedef string * stringArray;
 typedef stringArray * linesOfStringArrays; 
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por Abrir arquivo CSV
  *
- * @param 
+ * @param fptr Ponteiro para arquivo a ser aberto
+ * @param fname nome do arquivo a ser aberto
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Abrir arquivo de nome fname atribuindo-o a fptr;
+ * 2. Retorna 1 caso tenha sucesso e Retorna 0 caso tenha falhado.
+ * 
+ * @return 1 para sucesso na leitura/0 para falha na leitura
  */
 int openFile(FILE **fptr, string fname);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por capturar texto contido no próximo item de mesma linha
  *
- * @param 
- *
- * Essa função irá:
- *
- * 1. 
- * 2. 
- */
-FILE* findPosAndStoreNextText(FILE *fptr,int line, string *remainingText);
-/**
- * @brief Função responsável por 
- *
- * @param 
+ * @param fptr Ponteiro para arquivo sendo lido
+ * @param match Texto a ser populado pelo conteudo do item lido
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
- */
-void addMatchToLine(FILE *fptr,string match, int line);
-/**
- * @brief Função responsável por 
- *
- * @param 
- *
- * Essa função irá:
- *
- * 1. 
- * 2. 
- */
-void changeLineMatches(FILE *fptr,stringArray matches, int line);
-/**
- * @brief Função responsável por 
- *
- * @param 
- *
- * Essa função irá:
- *
- * 1. 
- * 2. 
+ * 1. avançar ponteiro FILE para próximo item
+ * 2. ler próximo e retorna 1 se não for fim da linha
+ * 3. não lê nada e retorna 0 se for fim da linha (assim ao termino da execução o ponteiro FILE estará apontando para a próxima linha)
+ * 
+ * @return 1 se o item foi lido com sucesso/0 se não havia item na linha a ser lido(avança para a proxima linha);
  */
 int getNextMatch(FILE *fptr,string *match);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por capturar texto de todos itens contido na linha
  *
- * @param 
+ * @param fptr Ponteiro para arquivo sendo lido
+ * @param matches Array de Textos a ser populado pelo conteudo dos itens lido
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Chamar a função getNextMatch repetidas vezes esperando pelo retorno 0
+ * 
  */
 void getNextLine(FILE *fptr, stringArray *matches);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por capturar texto de todos itens contido em todas as linhas subsequentes
  *
- * @param 
+ * @param fptr Ponteiro para arquivo sendo lido
+ * @param matches Array de Arrays de Textos a ser populado pelo conteudo das linhas lida
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Chamar a função getNextLine repetidas vezes esperando EOF.
  */
 void getRemainingMatches(FILE *fptr, linesOfStringArrays *matches);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por capturar texto de todos itens contido em todas as linhas do texto
  *
- * @param 
+ * @param fptr Ponteiro para arquivo sendo lido
+ * @param matches Array de Arrays de Textos a ser populado pelo conteudo das linhas lida
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Retornar o ponteiro FILE para o inicio do arquivo;
+ * 2. Chamar a função getRemainingMatches.
  */
 void getAllMatches(FILE *fptr, stringArray **matches);
 /**

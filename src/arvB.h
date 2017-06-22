@@ -9,8 +9,11 @@
  * "Projeto de algoritmos em C/Pascal"
  * 
  */
+#ifndef ARVB_H_INCLUDED
+#define ARVB_H_INCLUDED
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #define M 2 // 2, 20 e 40. 
 #define MM  (M * 2)
 #define FALSE 0
@@ -28,7 +31,7 @@ typedef struct {
 }Data;
 
 /**
- * @brief Definição do Tipo Chave usado na indexação do TAD Arvore B
+ * @brief Tipo Chave usado na indexação do TAD Arvore B
  */
 typedef long TipoChave;
 /**
@@ -57,9 +60,9 @@ typedef struct TipoPagina* TipoApontador;
  */
 typedef struct TipoPagina 
 {
-    short n;			///< numero de registros contidos na pagina
-    TipoRegistro r[MM];		///< Vetor de Registros armazenados na Pagina
-    TipoApontador p[MM + 1];	///< Ponteiro para Paginas Filhas
+    short tamanho_atual;			///< numero de registros contidos na pagina
+    TipoRegistro registros[MM];		///< Vetor de Registros armazenados na Pagina
+    TipoApontador filhos[MM + 1];	///< Ponteiro para Paginas Filhas
 } TipoPagina;
 /**
  * @brief Função responsável por Inicializar um Registro
@@ -210,3 +213,4 @@ void TestaI(TipoApontador p, int pai, short direita);
  * 2. 
  */
 void Testa(TipoApontador p);
+#endif

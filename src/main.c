@@ -29,9 +29,12 @@
  *
  * @param 
  *
- * Essa função irá:
+ * Essa é a função principal e é por meio dela que serão executados os testes. Para isso essa função irá:
  *
  * 1. 
  * 2. 
  */
-int main(){}
+int main(){
+    
+    return 0;
+}

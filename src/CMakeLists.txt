@@ -1,0 +1,5 @@
+cmake_minimum_required (VERSION 3.7)
+project (SistemaBibliioteca)
+file(GLOB S_SOURCES ./*.c)
+file(GLOB S_HEADERS ./*.h)
+add_executable(SistemaBibliioteca ${S_SOURCES} ${S_HEADERS})
