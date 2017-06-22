@@ -74,13 +74,12 @@ typedef struct TipoPagina
  */
 void InicializaRegistro(TipoRegistro *reg);
 /**
- * @brief Função responsável por Inicializar uma página de uma árvore
+ * @brief Função responsável por Inicializar página da Arvore B e atribuir os valores iniciais padrões a esta
  *
- * @param Dicionario ponteiro para TipoApontador que armazena o endereço da Página a ser inicializada
- *
- * Essa função irá atribuir valor nulo para o ponteiro recebido como parametro
+ * @param pagina Ponteiro para ponteiro de pagina a ser Inicializada 
+
  */
-void InicializaArvore(TipoApontador *Dicionario);
+void InicializaArvore(TipoApontador *pagina);
 /**
  * @brief Função responsável por 
  *

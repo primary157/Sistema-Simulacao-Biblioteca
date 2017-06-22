@@ -94,6 +94,8 @@ void getAllMatches(FILE *fptr, stringArray **matches);
  * 1. Percorrer cada item comparando o primeiro caracter com o primeiro caracter de match
  * 2. Se encontrar algum match que bata o primeiro caracter ele ira comparar todo o texto do match
  * 3. Por fim será retornado a posição de inicio do match encontrado ou -1 caso nao seja encontrado
+ * 
+ * @return posição de inicio do match encontrado ou -1 caso nao seja encontrado
  */
 long findMatch(FILE *fptr, string match);
 #endif

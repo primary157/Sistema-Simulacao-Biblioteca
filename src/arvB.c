@@ -1,8 +1,15 @@
 #include "arvB.h"
 
-void Inicializa(TipoApontador *Dicionario)
-{
-    *Dicionario = NULL;
+void InicializaArvore(TipoApontador *pagina){
+	int i;
+	(*pagina) = (TipoApontador)malloc(sizeof(TipoPagina));
+	(*pagina)->tamanho_atual = 0;
+	for (i = 0; i < MM; i++) {
+		(*pagina)->filhos[i] = NULL;
+		InicializaRegistro((*pagina)->registros + i);
+
+	}
+	(*pagina)->filhos[i] = NULL;
 }
 void InicializaRegistro(TipoRegistro *reg){
     reg->Chave = 0.0;

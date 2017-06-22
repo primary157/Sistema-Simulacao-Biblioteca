@@ -19,17 +19,6 @@
 #include "CSVManager.h"
 
 /**
- * @brief Função responsável por Inicializar página da Arvore B
- *
- * @param pagina Ponteiro para ponteiro de pagina que sera responsavel por amazenar pagina alocada
- * Essa função irá:
- *
- * 1. Alocar espaço para a pagina
- * 2. Inicializar os registros com um valor inicial padrão
- */
-void ArvoreComArquivo_Inicializa(TipoPagina **pagina);
-
-/**
  * @brief Função responsável por interpretar arquivo de entrada e executar a inicialização de suas paginas, chamando as funções necessárias para isso
  *
  * @param PaginaMae Ponteiro para Pagina com arquivo referente à Pagina Mae do No que sera aberto
