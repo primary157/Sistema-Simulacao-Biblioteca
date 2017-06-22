@@ -22,8 +22,8 @@
  * Este tipo apresenta os dados do registro que não são usados na indexação da Estrutura de Dados
  */
 typedef struct {
-	char *nome_do_livro;
-	char *nome_do_autor;
+	char nome_do_livro[40];
+	char nome_do_autor[20];
 	unsigned int numero_de_exemplares;
 }Data;
 

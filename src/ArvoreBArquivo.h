@@ -12,6 +12,7 @@
 #ifndef ARVOREBARQUIVO_H_INCLUDED
 #define ARVOREBARQUIVO_H_INCLUDED
 #define MM 80
+#define filename "tree.dat"
 #include <stdio.h>
 #include <string.h>
 #include "arvB.h"
@@ -20,7 +21,7 @@
 /**
  * @brief Ponteiro para arquivo de indexação geral da arvore
  */
-FILE *globalFile;
+FILE *globalFile = fopen(filename,"r+");
 
 
 /**
@@ -29,13 +30,10 @@ FILE *globalFile;
  * Esse Tipo é responsável por armazenar dados na Arvore B
  */
 typedef struct TipoPaginaComArquivo{
-    FILE *arquivo;	///< Essa variavel e legal
-    char *filename;
     short tamanho_atual;
     TipoRegistro registros[MM];
     TipoPaginaComArquivo* filhos[MM + 1];
 } TipoPaginaComArquivo;
-
 /**
  * @brief Função responsável por Inicializar página da Arvore B com Arquivo
  *
@@ -48,7 +46,7 @@ typedef struct TipoPaginaComArquivo{
  * 2. Abrir arquivo
  * 3. Inicializar os registros de acordo com o arquivo
  */
-void ArvoreComArquivo_Inicializa(TipoPaginaComArquivo* *Dicionario);
+void ArvoreComArquivo_Inicializa(TipoPaginaComArquivo **Dicionario);
 
 /**
  * @brief Função responsável por Finalizar página da Arvore B com Arquivo
@@ -67,6 +65,7 @@ void ArvoreComArquivo_Finaliza(TipoPaginaComArquivo **pagina);
  *
  * @param PaginaMae Ponteiro para Pagina com arquivo referente à Pagina Mae do No que sera aberto
  * @param Pagina Ponteiro para Pagina com arquivo referente ao No que sera aberto
+ * @param i Indice do Registro da PaginaMae que tem como filho o parametro Pagina
  *
  * Essa função irá:
  *
@@ -74,7 +73,7 @@ void ArvoreComArquivo_Finaliza(TipoPaginaComArquivo **pagina);
  * 2. Encontrar no arquivo de nome fname o indice referente a pagina a ser aberta
  * 3. Abrir arquivo, atribuir valores as variaveis da pagina
  */
-void AbrirArquivos(TipoPaginaComArquivo *PaginaMae, TipoPaginaComArquivo *Pagina);
+void AbrirArquivos(TipoPaginaComArquivo *PaginaMae, TipoPaginaComArquivo *Pagina, int i);
 
 /**
  * @brief Função responsável por 

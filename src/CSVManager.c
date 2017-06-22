@@ -203,3 +203,20 @@ void getAllMatches(FILE *fptr, linesOfStringArrays *matches){
 	rewind(fptr);
 	getRemainingMatches(fptr,matches);
 }
+long findMatch(FILE *fptr, string match){
+	string cmp;
+	long pos = -1;
+	short achou = 0;
+	while(!feof(fptr) && !achou){
+		while(getNextMatch(fptr,&cmp)) {
+			if(cmp[0] == match[0] && !strcmp(cmp,match)){
+				achou = 1;
+				break;			//Força fim de iteração
+			}
+			else{
+				pos = (long)ftell(fptr);	//guarda posição do ultimo ';' antes da palavra
+			}
+		}
+	}
+	return pos;
+}

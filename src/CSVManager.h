@@ -107,5 +107,17 @@ void getRemainingMatches(FILE *fptr, linesOfStringArrays *matches);
  * 2. 
  */
 void getAllMatches(FILE *fptr, stringArray **matches);
-
+/**
+ * @brief Função responsável por encontrar posição da primeira recorrencia de um dado match
+ *
+ * @param fptr Ponteiro para o arquivo a ser examinado
+ * @param match	string com o match a ser procurado
+ *
+ * Essa função irá:
+ *
+ * 1. Percorrer cada item comparando o primeiro caracter com o primeiro caracter de match
+ * 2. Se encontrar algum match que bata o primeiro caracter ele ira comparar todo o texto do match
+ * 3. Por fim será retornado a posição de inicio do match encontrado ou -1 caso nao seja encontrado
+ */
+long findMatch(FILE *fptr, string match);
 #endif
