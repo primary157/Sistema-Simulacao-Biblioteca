@@ -17,8 +17,7 @@ void InicializaRegistro(TipoRegistro *reg){
     strcpy(reg->information.nome_do_livro,"");
     reg->information.numero_de_exemplares = 0;
 }
-void Pesquisa(TipoRegistro *x, TipoApontador Ap)
-{
+void Pesquisa(TipoRegistro *x, TipoApontador Ap){
     long i = 1;
     if (Ap == NULL) {
         printf("TipoRegistro nao esta presente na arvore\n");
@@ -34,8 +33,7 @@ void Pesquisa(TipoRegistro *x, TipoApontador Ap)
     else Pesquisa(x, Ap->filhos[i]);
 }
 
-void InsereNaPagina(TipoApontador Ap, TipoRegistro Reg, TipoApontador ApDir)
-{
+void InsereNaPagina(TipoApontador Ap, TipoRegistro Reg, TipoApontador ApDir){
     short NaoAchouPosicao;
     int k;
     k = Ap->tamanho_atual;
@@ -55,8 +53,7 @@ void InsereNaPagina(TipoApontador Ap, TipoRegistro Reg, TipoApontador ApDir)
     Ap->tamanho_atual++;
 }
 
-void Ins(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegistro *RegRetorno,  TipoApontador *ApRetorno)
-{
+void Ins(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegistro *RegRetorno,  TipoApontador *ApRetorno){
     long i = 1;
     long j;
     TipoApontador ApTemp;
@@ -106,8 +103,7 @@ void Ins(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegistro *RegRe
     *ApRetorno = ApTemp;
 }
 
-void Insere(TipoRegistro Reg, TipoApontador *Ap) /*encapsulamento da função Ins()*/
-{
+void Insere(TipoRegistro Reg, TipoApontador *Ap){ /*encapsulamento da função Ins()*/
     short Cresceu;
     TipoRegistro RegRetorno;
     TipoPagina *ApRetorno, *ApTemp;
@@ -187,8 +183,7 @@ void Antecessor(TipoApontador Ap, int Ind,TipoApontador ApPai, short *Diminuiu){
     *Diminuiu = (ApPai->tamanho_atual < M);
 }
 
-void Ret(TipoChave Ch, TipoApontador *Ap, short *Diminuiu)
-{
+void Ret(TipoChave Ch, TipoApontador *Ap, short *Diminuiu){
     long j, Ind = 1;
     TipoApontador Pag;
     if (*Ap == NULL) {
@@ -219,8 +214,7 @@ void Ret(TipoChave Ch, TipoApontador *Ap, short *Diminuiu)
     if (*Diminuiu) Reconstitui(Pag->filhos[Ind-1], *Ap, Ind - 1, Diminuiu);
 }
 
-void Retira(TipoChave Ch, TipoApontador *Ap)
-{
+void Retira(TipoChave Ch, TipoApontador *Ap){
     short Diminuiu;
     TipoApontador Aux;
     Ret(Ch, Ap, &Diminuiu);
@@ -231,8 +225,7 @@ void Retira(TipoChave Ch, TipoApontador *Ap)
     }
 }
 
-void ImprimeI(TipoApontador p, int nivel)
-{
+void ImprimeI(TipoApontador p, int nivel){
     long i;
     if (p == NULL) return;
     printf("Nivel %d : ", nivel);
@@ -244,14 +237,12 @@ void ImprimeI(TipoApontador p, int nivel)
         ImprimeI(p->filhos[i], nivel);
 }
 
-void Imprime(TipoApontador p)
-{
+void Imprime(TipoApontador p){
     int  n = 0;
     ImprimeI(p, n);
 }
 
-void TestaI(TipoApontador p, int pai, short direita)
-{
+void TestaI(TipoApontador p, int pai, short direita){
     int i;
     int antecessor = 0;
     if (p == NULL) return;
@@ -272,8 +263,7 @@ void TestaI(TipoApontador p, int pai, short direita)
     TestaI(p->filhos[p->tamanho_atual], p->registros[i].Chave, TRUE);
 }
 
-void Testa(TipoApontador p)
-{
+void Testa(TipoApontador p){
     int i;
     if (p == NULL) return;
     for (i = 0; i < p->tamanho_atual; i++)
