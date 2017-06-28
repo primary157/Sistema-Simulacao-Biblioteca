@@ -1,10 +1,22 @@
 #include "arvB.h"
 
-void Inicializa(TipoApontador *Dicionario)
-{
-    *Dicionario = NULL;
-}
+void InicializaArvore(TipoApontador *pagina){
+	int i;
+	(*pagina) = (TipoApontador)malloc(sizeof(TipoPagina));
+	(*pagina)->tamanho_atual = 0;
+	for (i = 0; i < MM; i++) {
+		(*pagina)->filhos[i] = NULL;
+		InicializaRegistro((*pagina)->registros + i);
 
+	}
+	(*pagina)->filhos[i] = NULL;
+}
+void InicializaRegistro(TipoRegistro *reg){
+    reg->Chave = 0.0;
+    strcpy(reg->information.nome_do_autor,"");
+    strcpy(reg->information.nome_do_livro,"");
+    reg->information.numero_de_exemplares = 0;
+}
 void Pesquisa(TipoRegistro *x, TipoApontador Ap)
 {
     long i = 1;
@@ -12,35 +24,35 @@ void Pesquisa(TipoRegistro *x, TipoApontador Ap)
         printf("TipoRegistro nao esta presente na arvore\n");
         return;
     }
-    while (i < Ap->n && x->Chave > Ap->r[i-1].Chave) i++;
-    if (x->Chave == Ap->r[i-1].Chave) {
-        *x = Ap->r[i-1];
+    while (i < Ap->tamanho_atual && x->Chave > Ap->registros[i-1].Chave) i++;
+    if (x->Chave == Ap->registros[i-1].Chave) {
+        *x = Ap->registros[i-1];
         return;
     }
-    if (x->Chave < Ap->r[i-1].Chave)
-        Pesquisa(x, Ap->p[i-1]);
-    else Pesquisa(x, Ap->p[i]);
+    if (x->Chave < Ap->registros[i-1].Chave)
+        Pesquisa(x, Ap->filhos[i-1]);
+    else Pesquisa(x, Ap->filhos[i]);
 }
 
 void InsereNaPagina(TipoApontador Ap, TipoRegistro Reg, TipoApontador ApDir)
 {
     short NaoAchouPosicao;
     int k;
-    k = Ap->n;
+    k = Ap->tamanho_atual;
     NaoAchouPosicao = (k > 0);
     while (NaoAchouPosicao) {
-        if (Reg.Chave >= Ap->r[k-1].Chave) {
+        if (Reg.Chave >= Ap->registros[k-1].Chave) {
             NaoAchouPosicao = FALSE;
             break;
         }
-        Ap->r[k] = Ap->r[k-1];
-        Ap->p[k+1] = Ap->p[k];
+        Ap->registros[k] = Ap->registros[k-1];
+        Ap->filhos[k+1] = Ap->filhos[k];
         k--;
         if (k < 1) NaoAchouPosicao = FALSE;
     }
-    Ap->r[k] = Reg;
-    Ap->p[k+1] = ApDir;
-    Ap->n++;
+    Ap->registros[k] = Reg;
+    Ap->filhos[k+1] = ApDir;
+    Ap->tamanho_atual++;
 }
 
 void Ins(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegistro *RegRetorno,  TipoApontador *ApRetorno)
@@ -55,42 +67,42 @@ void Ins(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegistro *RegRe
         (*ApRetorno) = NULL;
         return;
     }
-    while (i < Ap->n && Reg.Chave > Ap->r[i-1].Chave)  i++;
+    while (i < Ap->tamanho_atual && Reg.Chave > Ap->registros[i-1].Chave)  i++;
 
-    if (Reg.Chave == Ap->r[i-1].Chave) {
+    if (Reg.Chave == Ap->registros[i-1].Chave) {
         printf(" Erro: Registro ja esta presente\n");
         *Cresceu = FALSE;
         return;
     }
-    if (Reg.Chave < Ap->r[i-1].Chave) i--;
+    if (Reg.Chave < Ap->registros[i-1].Chave) i--;
 
-    Ins(Reg, Ap->p[i], Cresceu, RegRetorno, ApRetorno);
+    Ins(Reg, Ap->filhos[i], Cresceu, RegRetorno, ApRetorno);
     if (!*Cresceu) return;
-    if (Ap->n < MM) { /* Pagina tem espaco */
+    if (Ap->tamanho_atual < MM) { /* Pagina tem espaco */
         InsereNaPagina(Ap, *RegRetorno, *ApRetorno);
         *Cresceu = FALSE;
         return;
     }
     /* Overflow: Pagina tem que ser dividida */
     ApTemp = (TipoApontador)malloc(sizeof(TipoPagina));
-    ApTemp->n = 0;
-    ApTemp->p[0] = NULL;
+    ApTemp->tamanho_atual = 0;
+    ApTemp->filhos[0] = NULL;
 
     if (i < M + 1) {
-        InsereNaPagina(ApTemp, Ap->r[MM-1], Ap->p[MM]);
-        Ap->n--;
+        InsereNaPagina(ApTemp, Ap->registros[MM-1], Ap->filhos[MM]);
+        Ap->tamanho_atual--;
         InsereNaPagina(Ap, *RegRetorno, *ApRetorno);
     } else {
         InsereNaPagina(ApTemp, *RegRetorno, *ApRetorno);
     }
 
     for (j = M + 2; j <= MM; j++){
-        InsereNaPagina(ApTemp, Ap->r[j-1], Ap->p[j]);
+        InsereNaPagina(ApTemp, Ap->registros[j-1], Ap->filhos[j]);
     }
     
-    Ap->n = M;
-    ApTemp->p[0] = Ap->p[M+1];
-    *RegRetorno = Ap->r[M];
+    Ap->tamanho_atual = M;
+    ApTemp->filhos[0] = Ap->filhos[M+1];
+    *RegRetorno = Ap->registros[M];
     *ApRetorno = ApTemp;
 }
 
@@ -103,10 +115,10 @@ void Insere(TipoRegistro Reg, TipoApontador *Ap) /*encapsulamento da função In
     if (Cresceu) /* Arvore cresce na altura pela raiz */
     {
         ApTemp = (TipoPagina *)malloc(sizeof(TipoPagina));
-        ApTemp->n = 1;
-        ApTemp->r[0] = RegRetorno;
-        ApTemp->p[1] = ApRetorno;
-        ApTemp->p[0] = *Ap;
+        ApTemp->tamanho_atual = 1;
+        ApTemp->registros[0] = RegRetorno;
+        ApTemp->filhos[1] = ApRetorno;
+        ApTemp->filhos[0] = *Ap;
         *Ap = ApTemp;
     }
 }
@@ -114,65 +126,65 @@ void Insere(TipoRegistro Reg, TipoApontador *Ap) /*encapsulamento da função In
 void Reconstitui(TipoApontador ApPag, TipoApontador ApPai,int PosPai, short *Diminuiu){
     TipoPagina *Aux;
     long DispAux, j;
-    if (PosPai < ApPai->n) { /* Aux = TipoPagina a direita de ApPag */
-        Aux = ApPai->p[PosPai+1];
-        DispAux = (Aux->n - M + 1) / 2;
-        ApPag->r[ApPag->n] = ApPai->r[PosPai];
-        ApPag->p[ApPag->n + 1] = Aux->p[0];
-        ApPag->n++;
+    if (PosPai < ApPai->tamanho_atual) { /* Aux = TipoPagina a direita de ApPag */
+        Aux = ApPai->filhos[PosPai+1];
+        DispAux = (Aux->tamanho_atual - M + 1) / 2;
+        ApPag->registros[ApPag->tamanho_atual] = ApPai->registros[PosPai];
+        ApPag->filhos[ApPag->tamanho_atual + 1] = Aux->filhos[0];
+        ApPag->tamanho_atual++;
         if (DispAux > 0) { /* Existe folga: transfere de Aux para ApPag */
             for (j = 1; j < DispAux; j++)
-                InsereNaPagina(ApPag, Aux->r[j-1], Aux->p[j]);
-            ApPai->r[PosPai] = Aux->r[DispAux-1];
-            Aux->n -= DispAux;
-            for (j = 0; j < Aux->n; j++) Aux->r[j] = Aux->r[j + DispAux];
-            for (j = 0; j <= Aux->n; j++) Aux->p[j] = Aux->p[j + DispAux];
+                InsereNaPagina(ApPag, Aux->registros[j-1], Aux->filhos[j]);
+            ApPai->registros[PosPai] = Aux->registros[DispAux-1];
+            Aux->tamanho_atual -= DispAux;
+            for (j = 0; j < Aux->tamanho_atual; j++) Aux->registros[j] = Aux->registros[j + DispAux];
+            for (j = 0; j <= Aux->tamanho_atual; j++) Aux->filhos[j] = Aux->filhos[j + DispAux];
             *Diminuiu = FALSE;
         } else { /* Fusao: intercala Aux em ApPag e libera Aux */
             for (j = 1; j <= M; j++)
-                InsereNaPagina(ApPag, Aux->r[j-1], Aux->p[j]);
+                InsereNaPagina(ApPag, Aux->registros[j-1], Aux->filhos[j]);
             free(Aux);
-            for (j = PosPai + 1; j < ApPai->n; j++) {
-                ApPai->r[j-1] = ApPai->r[j];
-                ApPai->p[j] = ApPai->p[j+1];
+            for (j = PosPai + 1; j < ApPai->tamanho_atual; j++) {
+                ApPai->registros[j-1] = ApPai->registros[j];
+                ApPai->filhos[j] = ApPai->filhos[j+1];
             }
-            ApPai->n--;
-            if (ApPai->n >= M) *Diminuiu = FALSE;
+            ApPai->tamanho_atual--;
+            if (ApPai->tamanho_atual >= M) *Diminuiu = FALSE;
         }
     } else { /* Aux = TipoPagina a esquerda de ApPag */
-        Aux = ApPai->p[PosPai-1];
-        DispAux = (Aux->n - M + 1) / 2;
-        for (j = ApPag->n; j >= 1; j--) ApPag->r[j] = ApPag->r[j-1];
-        ApPag->r[0] = ApPai->r[PosPai-1];
-        for (j = ApPag->n; j >= 0; j--) ApPag->p[j+1] = ApPag->p[j];
-        ApPag->n++;
+        Aux = ApPai->filhos[PosPai-1];
+        DispAux = (Aux->tamanho_atual - M + 1) / 2;
+        for (j = ApPag->tamanho_atual; j >= 1; j--) ApPag->registros[j] = ApPag->registros[j-1];
+        ApPag->registros[0] = ApPai->registros[PosPai-1];
+        for (j = ApPag->tamanho_atual; j >= 0; j--) ApPag->filhos[j+1] = ApPag->filhos[j];
+        ApPag->tamanho_atual++;
         if (DispAux > 0) { /* Existe folga: transf. de Aux para ApPag */
             for (j = 1; j < DispAux; j++)
-                InsereNaPagina(ApPag, Aux->r[Aux->n - j],Aux->p[Aux->n - j + 1]);
-            ApPag->p[0] = Aux->p[Aux->n - DispAux + 1];
-            ApPai->r[PosPai-1] = Aux->r[Aux->n - DispAux];
-            Aux->n -= DispAux;
+                InsereNaPagina(ApPag, Aux->registros[Aux->tamanho_atual - j],Aux->filhos[Aux->tamanho_atual - j + 1]);
+            ApPag->filhos[0] = Aux->filhos[Aux->tamanho_atual - DispAux + 1];
+            ApPai->registros[PosPai-1] = Aux->registros[Aux->tamanho_atual - DispAux];
+            Aux->tamanho_atual -= DispAux;
             *Diminuiu = FALSE;
         } else { /* Fusao: intercala ApPag em Aux e libera ApPag */
             for (j = 1; j <= M; j++)
-                InsereNaPagina(Aux, ApPag->r[j-1], ApPag->p[j]);
+                InsereNaPagina(Aux, ApPag->registros[j-1], ApPag->filhos[j]);
             free(ApPag);
-            ApPai->n--;
-            if (ApPai->n >= M)  *Diminuiu = FALSE;
+            ApPai->tamanho_atual--;
+            if (ApPai->tamanho_atual >= M)  *Diminuiu = FALSE;
         }
     }
 }
 
 void Antecessor(TipoApontador Ap, int Ind,TipoApontador ApPai, short *Diminuiu){
-    if (ApPai->p[ApPai->n] != NULL) {
-        Antecessor(Ap, Ind, ApPai->p[ApPai->n], Diminuiu);
+    if (ApPai->filhos[ApPai->tamanho_atual] != NULL) {
+        Antecessor(Ap, Ind, ApPai->filhos[ApPai->tamanho_atual], Diminuiu);
         if (*Diminuiu)
-            Reconstitui(ApPai->p[ApPai->n], ApPai, (long)ApPai->n, Diminuiu);
+            Reconstitui(ApPai->filhos[ApPai->tamanho_atual], ApPai, (long)ApPai->tamanho_atual, Diminuiu);
         return;
     }
-    Ap->r[Ind-1] = ApPai->r[ApPai->n - 1];
-    ApPai->n--;
-    *Diminuiu = (ApPai->n < M);
+    Ap->registros[Ind-1] = ApPai->registros[ApPai->tamanho_atual - 1];
+    ApPai->tamanho_atual--;
+    *Diminuiu = (ApPai->tamanho_atual < M);
 }
 
 void Ret(TipoChave Ch, TipoApontador *Ap, short *Diminuiu)
@@ -185,26 +197,26 @@ void Ret(TipoChave Ch, TipoApontador *Ap, short *Diminuiu)
         return;
     }
     Pag = *Ap;
-    while (Ind < Pag->n && Ch > Pag->r[Ind-1].Chave) Ind++;
-    if (Ch == Pag->r[Ind-1].Chave) {
-        if (Pag->p[Ind-1] == NULL) { /* TipoPagina folha */
-            Pag->n--;
-            *Diminuiu = (Pag->n < M);
-            for (j = Ind; j <= Pag->n; j++) {
-                Pag->r[j-1] = Pag->r[j];
-                Pag->p[j] = Pag->p[j+1];
+    while (Ind < Pag->tamanho_atual && Ch > Pag->registros[Ind-1].Chave) Ind++;
+    if (Ch == Pag->registros[Ind-1].Chave) {
+        if (Pag->filhos[Ind-1] == NULL) { /* TipoPagina folha */
+            Pag->tamanho_atual--;
+            *Diminuiu = (Pag->tamanho_atual < M);
+            for (j = Ind; j <= Pag->tamanho_atual; j++) {
+                Pag->registros[j-1] = Pag->registros[j];
+                Pag->filhos[j] = Pag->filhos[j+1];
             }
             return;
         }
         /* TipoPagina nao e folha: trocar com antecessor */
-        Antecessor(*Ap, Ind, Pag->p[Ind-1], Diminuiu);
+        Antecessor(*Ap, Ind, Pag->filhos[Ind-1], Diminuiu);
         if (*Diminuiu)
-            Reconstitui(Pag->p[Ind-1], *Ap, Ind - 1, Diminuiu);
+            Reconstitui(Pag->filhos[Ind-1], *Ap, Ind - 1, Diminuiu);
         return;
     }
-    if (Ch > Pag->r[Ind-1].Chave) Ind++;
-    Ret(Ch, &Pag->p[Ind-1], Diminuiu);
-    if (*Diminuiu) Reconstitui(Pag->p[Ind-1], *Ap, Ind - 1, Diminuiu);
+    if (Ch > Pag->registros[Ind-1].Chave) Ind++;
+    Ret(Ch, &Pag->filhos[Ind-1], Diminuiu);
+    if (*Diminuiu) Reconstitui(Pag->filhos[Ind-1], *Ap, Ind - 1, Diminuiu);
 }
 
 void Retira(TipoChave Ch, TipoApontador *Ap)
@@ -212,9 +224,9 @@ void Retira(TipoChave Ch, TipoApontador *Ap)
     short Diminuiu;
     TipoApontador Aux;
     Ret(Ch, Ap, &Diminuiu);
-    if (Diminuiu && (*Ap)->n == 0) { /* Arvore diminui na altura */
+    if (Diminuiu && (*Ap)->tamanho_atual == 0) { /* Arvore diminui na altura */
         Aux = *Ap;
-        *Ap = Aux->p[0];
+        *Ap = Aux->filhos[0];
         free(Aux);
     }
 }
@@ -224,12 +236,12 @@ void ImprimeI(TipoApontador p, int nivel)
     long i;
     if (p == NULL) return;
     printf("Nivel %d : ", nivel);
-    for (i = 0; i < p->n; i++)
-        printf("%ld ",(long)p->r[i].Chave);
+    for (i = 0; i < p->tamanho_atual; i++)
+        printf("%ld ",(long)p->registros[i].Chave);
     putchar('\n');
     nivel++;
-    for (i = 0; i <= p->n; i++)
-        ImprimeI(p->p[i], nivel);
+    for (i = 0; i <= p->tamanho_atual; i++)
+        ImprimeI(p->filhos[i], nivel);
 }
 
 void Imprime(TipoApontador p)
@@ -243,28 +255,28 @@ void TestaI(TipoApontador p, int pai, short direita)
     int i;
     int antecessor = 0;
     if (p == NULL) return;
-    if (p->r[0].Chave > pai && direita == FALSE) {
-        printf("Erro: filho %12ld maior que pai %d\n", p->r[0].Chave, pai);
+    if (p->registros[0].Chave > pai && direita == FALSE) {
+        printf("Erro: filho %12ld maior que pai %d\n", p->registros[0].Chave, pai);
         return;
     }
-    for (i = 0; i < p->n; i++) {
-        if (p->r[i].Chave <= antecessor) {
+    for (i = 0; i < p->tamanho_atual; i++) {
+        if (p->registros[i].Chave <= antecessor) {
             printf("Erro: irmao %ld maior que irmao a esquerda %d\n",
-                   (long)p->r[i].Chave, antecessor);
+                   (long)p->registros[i].Chave, antecessor);
             return;
         }
-        antecessor = p->r[i].Chave;
+        antecessor = p->registros[i].Chave;
     }
-    for (i = 0; i < p->n; i++)
-        TestaI(p->p[i], p->r[i].Chave, FALSE);
-    TestaI(p->p[p->n], p->r[i].Chave, TRUE);
+    for (i = 0; i < p->tamanho_atual; i++)
+        TestaI(p->filhos[i], p->registros[i].Chave, FALSE);
+    TestaI(p->filhos[p->tamanho_atual], p->registros[i].Chave, TRUE);
 }
 
 void Testa(TipoApontador p)
 {
     int i;
     if (p == NULL) return;
-    for (i = 0; i < p->n; i++)
-        TestaI(p->p[i], p->r[i].Chave, FALSE);
-    TestaI(p->p[p->n], p->r[i].Chave, TRUE);
+    for (i = 0; i < p->tamanho_atual; i++)
+        TestaI(p->filhos[i], p->registros[i].Chave, FALSE);
+    TestaI(p->filhos[p->tamanho_atual], p->registros[i].Chave, TRUE);
 }
