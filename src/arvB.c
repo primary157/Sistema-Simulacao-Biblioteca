@@ -111,9 +111,7 @@ void Insere(TipoRegistro Reg, TipoApontador *Ap) /*encapsulamento da função In
     }
 }
 
-void Reconstitui(TipoApontador ApPag, TipoApontador ApPai,
-                 int PosPai, short *Diminuiu)
-{
+void Reconstitui(TipoApontador ApPag, TipoApontador ApPai,int PosPai, short *Diminuiu){
     TipoPagina *Aux;
     long DispAux, j;
     if (PosPai < ApPai->n) { /* Aux = TipoPagina a direita de ApPag */
@@ -150,8 +148,7 @@ void Reconstitui(TipoApontador ApPag, TipoApontador ApPai,
         ApPag->n++;
         if (DispAux > 0) { /* Existe folga: transf. de Aux para ApPag */
             for (j = 1; j < DispAux; j++)
-                InsereNaPagina(ApPag, Aux->r[Aux->n - j],
-                               Aux->p[Aux->n - j + 1]);
+                InsereNaPagina(ApPag, Aux->r[Aux->n - j],Aux->p[Aux->n - j + 1]);
             ApPag->p[0] = Aux->p[Aux->n - DispAux + 1];
             ApPai->r[PosPai-1] = Aux->r[Aux->n - DispAux];
             Aux->n -= DispAux;
@@ -166,9 +163,7 @@ void Reconstitui(TipoApontador ApPag, TipoApontador ApPai,
     }
 }
 
-void Antecessor(TipoApontador Ap, int Ind,
-                TipoApontador ApPai, short *Diminuiu)
-{
+void Antecessor(TipoApontador Ap, int Ind,TipoApontador ApPai, short *Diminuiu){
     if (ApPai->p[ApPai->n] != NULL) {
         Antecessor(Ap, Ind, ApPai->p[ApPai->n], Diminuiu);
         if (*Diminuiu)

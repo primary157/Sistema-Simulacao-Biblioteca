@@ -79,14 +79,16 @@ void InicializaRegistro(TipoRegistro *reg);
  */
 void InicializaArvore(TipoApontador *Dicionario);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por Pesquisar registro em uma arvore
  *
- * @param 
+ * @param x ponteiro para registro a receber endereço de registro procurado
+ *
+ * @param Ap Arvore em que se esta pesquisando
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Procurar um registro na arvore
+ * 2. Atribuir ao ponteiro x o endereço do registro encontrado
  */
 void Pesquisa(TipoRegistro *x, TipoApontador Ap);
 /**
@@ -101,91 +103,113 @@ void Pesquisa(TipoRegistro *x, TipoApontador Ap);
  */
 void InsereNaPagina(TipoApontador Ap,TipoRegistro Reg, TipoApontador ApDir);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por Inserir registro a uma arvore B encapsulada
  *
- * @param 
+ * @param Reg registro a ser inserido na arvore
+ *
+ * @param Ap Arvore em que se esta inserindo
+ *
+ * @param Cresceu flag usada para marcar quando a arvore cresce na altura
+ *
+ * @param RegRetorno quando a arvore cresce na altura, essa variavel referencia o registro pertencente a raiz
+ *
+ * @param ApRetorno quando a arvore cresce na altura, essa variavel referencia a pagina filha da raiz
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Encontrar a posição a ser inserido o registrador
+ * 2. Inserir o Registrador
  */
 void Ins(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegistro *RegRetorno,  TipoApontador *ApRetorno);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por Inserir registro a uma arvore B que encapsula Ins
  *
- * @param 
+ * @param Reg registro a ser inserido na arvore
  *
- * Essa função irá:
+ * @param Ap Arvore em que se esta inserindo
  *
- * 1. 
- * 2. 
+ * Essa função encapsula a função Ins reduzindo os numeros de parametros passados.
  */
 void Insere(TipoRegistro Reg, TipoApontador *Ap);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por corrigir quebra das regras da Arvore B
  *
- * @param 
+ * @param ApPag Pagina a ser tratada
+ *
+ * @param ApPai Pagina pai da pagina a ser tratada
+ *
+ * @param PosPai Indice da pagina a ser tratada no vetor de filhos da pagina pai
+ *
+ * @param Diminuiu flag ativada quando há uma diminuição na altura da arvore
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Confere se ApPag é ultimo filho de ApPai
+ * 	1. Se é o último filho considera Pagina irma como sendo a da esquerda (anterior no vetor de paginas de ApPai)
+ * 	2. Caso Contrário considera Pagina irma como sendo a da direita (proxima no vetor de paginas de ApPai)
+ * 2. Confere se pagina irma possui algum registro para doar
+ * 	1. Se pagina irma possui registro para doar, este registro é transferido para ApPai e o registro de ApPai que delimitava os valores entre as Paginas irmas é trazido para a ApPag
+ * 	2. Caso Contrario é executado o merge, onde ambas as paginas irmas sao concatenadas e recebem o registro de ApPai que delimitava os valores entre elas
  */
 void Reconstitui(TipoApontador ApPag, TipoApontador ApPai,int PosPai, short *Diminuiu);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por encontrar registro antecessor ao Ap
  *
- * @param 
+ * @param Ap pagina onde sera inserido o antecessor
+ *
+ * @param Ind indice da pagina Ap no vetor de filhos de ApPai
+ *
+ * @param ApPai Pagina origem do antecessor
+ *
+ * @param Diminuiu flag ativada quando há uma diminuição na altura da arvore
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Percorrer a arvore pelas paginas à esquerda até encontrar o nó folha
+ * 2. Capturar o maior registro do nó folha como sendo o antecessor
  */
 void Antecessor(TipoApontador Ap, int Ind, TipoApontador ApPai, short *Diminuiu);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por retirar registro da arvore encapsulada
  *
- * @param 
+ * @param Ch Chave do Registro a ser removido
+ *
+ * @param Ap Arvore em que se esta removendo
+ *
+ * @param Diminuiu flag para alertar redução na altura da arvore
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1.Encontrar o registro a ser removido
+ * 2.Remove-o, chamando as devidas funções auxiliares para reestruturar a arvore atendendo as regras da Arvore B
  */
 void Ret(TipoChave Ch, TipoApontador *Ap, short *Diminuiu);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por retirar registro da arvore
  *
- * @param 
+ * @param Ch Chave do Registro a ser removido
  *
- * Essa função irá:
+ * @param Ap Arvore em que se esta removendo
  *
- * 1. 
- * 2. 
+ * Essa função encapsula a função Ret reduzindo os numeros de parametros passados.
  */
 void Retira(TipoChave Ch, TipoApontador *Ap);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por Imprimir conteudo da Arvore B
  *
- * @param 
+ * @param p Arvore a ser imprimida
  *
- * Essa função irá:
+ * @param nivel variavel auxiliar para calcular nivel de altura acessado
  *
- * 1. 
- * 2. 
+ * Essa função irá passar por todas as paginas imprimindo seus conteudos
  */
 void ImprimeI(TipoApontador p, int nivel);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por encapsular a função ImprimeI
  *
- * @param 
+ * @param p Arvore a ser imprimida
  *
- * Essa função irá:
- *
- * 1. 
- * 2. 
+ * Essa função encapsula a função ImprimeI reduzindo os numeros de parametros passados.
  */
 void Imprime(TipoApontador p);
 /**
