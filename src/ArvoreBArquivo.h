@@ -2,36 +2,32 @@
  * @file
  * @author "Victor Guerra Veloso e Luan Henrique Silva Alves"
  * @date "13/06/2017"
- * @brief Arquivo de Implementacao das funções do TAD modificado de Arvore B que faz uso de indexação 
- * por arquivos para leitura e escrita
+ * @brief Arquivo de Implementacao da função de interpretação de arquivos para criação da Arvore B a partir de uma entrada de texto
  *
- * @details Nesse arquivo sobrescrevemos algumas funções básicas da implementação de Árvore B do Nivio Ziviani, 
- * dando a essa estrutura de dados a capacidade de gerenciar seus dados em arquivos de texto estruturados
+ * @details Nesse arquivo implementamos um algoritmo que liga a funcionalidade de inserção na Árvore B do Nivio Ziviani, 
+ * com a biblioteca de leitura de arquivos CSV implementada pela dupla.
  */
 
 #ifndef ARVOREBARQUIVO_H_INCLUDED
 #define ARVOREBARQUIVO_H_INCLUDED
-#define MM 80
-#define filename "tree.dat"
 #include <stdio.h>
 #include <string.h>
 #include "arvB.h"
-#include "CSVManager.h"
+
+#define NOME_ARQUIVO "teste2.txt"
 
 /**
  * @brief Função responsável por interpretar arquivo de entrada e executar a inicialização de suas paginas, chamando as funções necessárias para isso
  *
- * @param PaginaMae Ponteiro para Pagina com arquivo referente à Pagina Mae do No que sera aberto
- * @param fptr Ponteiro para arquivo que sera lido
- * @param i Indice do Registro da PaginaMae que tem como filho o parametro Pagina
+ * @param D Ponteiro para Pagina raiz da Árvore B a ser preenchida com dados do arquivo
  *
  * Essa função irá:
  *
- * 1. Abrir arquivo, atribuir valores as variaveis da pagina
- * 2. Fazer chamada recursiva para nó filho da esquerda
- * 3. Fazer chamada recursiva para nó filho da direita
+ * 1. Abrir arquivo, atribuir valores as variaveis de um registro temporário
+ * 2. Inserir registro à arvore
+ * 3. Repetir os passos 1 e 2 até o fim do arquivo (EOF)
  */
-void LerArquivo(TipoPagina *PaginaMae, int i, FILE **fptr);
+void LerArquivo(TipoApontador *D);
 
 
 

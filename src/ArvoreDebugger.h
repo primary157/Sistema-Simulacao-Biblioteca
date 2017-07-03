@@ -2,7 +2,8 @@
  * @file
  * @author "Victor Guerra Veloso e Luan Henrique Silva Alves"
  * @date "27/06/2017"
- * @brief Arquivo de Implementacao das funções do TAD Arvore B com contagem de acessos a disco
+ * @brief Arquivo de Implementacao das funções do TAD Arvore B adaptada para os nossos casos de testes e
+ * para contabilizar acesso ao disco e comparações
  *
  * @details Nesse arquivo implementamos a função altura e sobrescrevemos algumas funções básicas da implementação de Árvore B do Nivio Ziviani, 
  * dando às suas funções a habilidade de contabilizar os acessos a disco e comparações
@@ -11,6 +12,21 @@
 #ifndef ARVOREDEBUGGER_H_INCLUDED
 #define ARVOREDEBUGGER_H_INCLUDED
 #include "arvB.h"
+/**
+ * @brief Principal TAD da Arvore B
+ *
+ * Esse TAD é o diferencial da Arvore B, ele contem MM registros e MM+1 ponteiros para
+ * Paginas Filhas
+ */
+typedef struct TipoPaginaDebugger
+{
+    short tamanho_atual;			///< numero de registros contidos na pagina
+    TipoRegistro registros[MM];		///< Vetor de Registros armazenados na Pagina
+    struct TipoPaginaDebugger *filhos[MM + 1];	///< Ponteiro para Paginas Filhas
+    short Na_Mem_Principal;         ///< Flag para marcar pagina lida na memoria principal
+    short Modificada;         ///< Flag para marcar paginas modificadas
+} TipoPaginaDebugger;
+
 /**
  * @brief Tipo que armazena acumuladores de acessos a disco
  *
@@ -37,6 +53,29 @@ typedef struct{
  * enum que abrange ambos os Tipos de Acesso (Leitura e Escrita), utilizada na função de incrementar acessos a disco
  */
 typedef enum{ ACESSO_DE_ESCRITA, ACESSO_DE_LEITURA } TipoDeAcesso;
+//Conversões de tipos
+/**
+ * @brief Função responsável por transformar Pagina em PaginaDebugger com variavel Na_Mem_Principal resetada
+ *
+ * @param Ap Pagina a ser transformada
+ *
+ * @return Pagina representada por um ponteiro de PaginaDebugger
+ *
+ * Função responsável por transformar Pagina em PaginaDebugger com variavel Na_Mem_Principal resetada
+ *
+ */
+TipoPaginaDebugger* PAGINADEBUGGER(TipoApontador Ap);
+/**
+ * @brief Função responsável por transformar PaginaDebugger em Pagina sem variavel Na_Mem_Principal
+ *
+ * @param Ap Pagina a ser transformada
+ *
+ * @return PaginaDebugger representada por um ponteiro de Pagina
+ * 
+ * Função responsável por transformar PaginaDebugger em Pagina sem variavel Na_Mem_Principal
+ *
+ */
+TipoApontador PAGINA(TipoPaginaDebugger *Ap);
 //Algoritmos internos
 /**
  * @brief Função responsável por reiniciar um debugger
@@ -104,7 +143,7 @@ int altura(TipoApontador *Ap);
  * 1. Procurar um registro na arvore, contando numero de acessos a disco e numero de comparações feitas
  * 2. Atribuir ao ponteiro x o endereço do registro encontrado
  */
-void PesquisaComContagem(TipoRegistro *x, TipoApontador Ap,Debugger *dbg);
+void PesquisaComContagem(TipoRegistro *x, TipoPaginaDebugger *Ap,Debugger *dbg);
 /**
  * @brief Função responsável por Inserir registro a uma arvore B encapsulada com contagem de acessos ao disco e comparações
  *
@@ -125,7 +164,7 @@ void PesquisaComContagem(TipoRegistro *x, TipoApontador Ap,Debugger *dbg);
  * 1. Encontrar a posição a ser inserido o registrador, contando numero de acessos de leitura
  * 2. Inserir o Registrador, contando numero de acessos de leitura
  */
-void InsComContagem(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegistro *RegRetorno,  TipoApontador *ApRetorno,Debugger *dbg);
+void InsComContagem(TipoRegistro Reg, TipoPaginaDebugger *Ap, short *Cresceu, TipoRegistro *RegRetorno,  TipoPaginaDebugger **ApRetorno,Debugger *dbg);
 /**
  * @brief Função responsável por Inserir registro a uma arvore B com contagem de acessos ao disco e comparações
  *
@@ -138,7 +177,7 @@ void InsComContagem(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegi
  * Essa função encapsula a função InsComContagem reduzindo os numeros de parametros passados.
  *
  */
-void InsereComContagem(TipoRegistro Reg, TipoApontador *Ap,Debugger *dbg);
+void InsereComContagem(TipoRegistro Reg, TipoPaginaDebugger **Ap,Debugger *dbg);
 /**
  * @brief Função responsável por retirar registro da arvore encapsulada com contagem de acessos ao disco e comparações
  *
@@ -155,7 +194,7 @@ void InsereComContagem(TipoRegistro Reg, TipoApontador *Ap,Debugger *dbg);
  * 1.Encontrar o registro a ser removido, contando o numero de acessos de leitura
  * 2.Remove-o, chamando as devidas funções auxiliares para reestruturar a arvore atendendo as regras da Arvore B, contando o numero de acessos de escrita
  */
-void RetComContagem(TipoChave Ch, TipoApontador *Ap, short *Diminuiu,Debugger *dbg);
+void RetComContagem(TipoChave Ch, TipoPaginaDebugger **Ap, short *Diminuiu,Debugger *dbg);
 /**
  * @brief Função responsável por retirar registro da arvore com contagem de acessos ao disco e comparações
  *
@@ -167,7 +206,7 @@ void RetComContagem(TipoChave Ch, TipoApontador *Ap, short *Diminuiu,Debugger *d
  *
  * Essa função encapsula a função RetComContagem reduzindo os numeros de parametros passados.
  */
-void RetiraComContagem(TipoChave Ch, TipoApontador *Ap,Debugger *dbg);
+void RetiraComContagem(TipoChave Ch, TipoPaginaDebugger **Ap,Debugger *dbg);
 /**
  * @brief Função responsável por Imprimir conteudo da Arvore B
  *
@@ -179,7 +218,7 @@ void RetiraComContagem(TipoChave Ch, TipoApontador *Ap,Debugger *dbg);
  *
  * Essa função irá passar por todas as paginas imprimindo seus conteudos
  */
-void ImprimeIComContagem(TipoApontador p, int nivel, Debugger *dbg);
+void ImprimeIComContagem(TipoPaginaDebugger *p, int nivel, Debugger *dbg);
 /**
  * @brief Função responsável por encapsular a função ImprimeIComContagem
  *
@@ -189,7 +228,7 @@ void ImprimeIComContagem(TipoApontador p, int nivel, Debugger *dbg);
  *
  * Essa função encapsula a função ImprimeIComContagem reduzindo os numeros de parametros passados.
  */
-void ImprimeComContagem(TipoApontador p,Debugger *dbg);
+void ImprimeComContagem(TipoPaginaDebugger *p,Debugger *dbg);
 /**
  * @brief Função responsável por corrigir quebra das regras da Arvore B com contagem de acessos ao disco e comparações
  *
@@ -212,7 +251,7 @@ void ImprimeComContagem(TipoApontador p,Debugger *dbg);
  * 	1. Se pagina irma possui registro para doar, este registro é transferido para ApPai e o registro de ApPai que delimitava os valores entre as Paginas irmas é trazido para a ApPag
  * 	2. Caso Contrario é executado o merge, onde ambas as paginas irmas sao concatenadas e recebem o registro de ApPai que delimitava os valores entre elas
  */
-void ReconstituiComContagem(TipoApontador ApPag, TipoApontador ApPai,int PosPai, short *Diminuiu, Debugger *dbg);
+void ReconstituiComContagem(TipoPaginaDebugger *ApPag, TipoPaginaDebugger *ApPai,int PosPai, short *Diminuiu, Debugger *dbg);
 /**
  * @brief Função responsável por encontrar registro antecessor ao Ap com contagem de acessos ao disco e comparações
  *
@@ -231,7 +270,25 @@ void ReconstituiComContagem(TipoApontador ApPag, TipoApontador ApPai,int PosPai,
  * 1. Percorrer a arvore pelas paginas à esquerda até encontrar o nó folha
  * 2. Capturar o maior registro do nó folha como sendo o antecessor
  */
-void AntecessorComContagem(TipoApontador Ap, int Ind,TipoApontador ApPai, short *Diminuiu, Debugger *dbg);
-
+void AntecessorComContagem(TipoPaginaDebugger *Ap, int Ind,TipoPaginaDebugger *ApPai, short *Diminuiu, Debugger *dbg);
+/**
+ * @brief Função responsável por inserir um registro à pagina com contagem de acessos ao disco e comparações
+ *
+ * @param Ap Ponteiro para a Página atual
+ * 
+ * @param Reg Registro a ser inserido
+ * 
+ * @param ApDir Ponteiro para a pagina filha à direita do registro a ser inserido
+ *
+ * @param dbg Debugger que armazenará contadores a serem incrementados
+ *
+ * Essa função irá:
+ *
+ * 1. Encontrar posição interna para se inserir Reg
+ * 2. Conferir se há espaço para efetuar a inserção
+ *   1.Se tiver espaço, inserir
+ *   2.Se não tiver espaço, fazer split 
+ */
+void InsereNaPaginaComContagem(TipoPaginaDebugger *Ap, TipoRegistro Reg, TipoPaginaDebugger *ApDir, Debugger *dbg);
 
 #endif

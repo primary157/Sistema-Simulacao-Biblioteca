@@ -94,14 +94,20 @@ void InicializaArvore(TipoApontador *pagina);
  */
 void Pesquisa(TipoRegistro *x, TipoApontador Ap);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por inserir um registro à pagina
  *
- * @param 
+ * @param Ap Ponteiro para a Página atual
+ * 
+ * @param Reg Registro a ser inserido
+ * 
+ * @param ApDir Ponteiro para a pagina filha à direita do registro a ser inserido
  *
  * Essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Encontrar posição interna para se inserir Reg
+ * 2. Conferir se há espaço para efetuar a inserção
+ *   1.Se tiver espaço, inserir
+ *   2.Se não tiver espaço, fazer split 
  */
 void InsereNaPagina(TipoApontador Ap,TipoRegistro Reg, TipoApontador ApDir);
 /**
