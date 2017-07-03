@@ -45,6 +45,7 @@ void run_ui(TipoPaginaDebugger *Ap){
             case ANALYSIS:
                 printf("ANALISANDO\n");
                 imprimeDebugger(&dbg);
+                printf("Altura atual da arvore: %d\n",altura(PAGINA(Ap)));
                 resetDebugger(&dbg);
                 resetContadorPaginaRaiz(Ap);
                 answer = -1;

@@ -144,7 +144,7 @@ void imprimeDebugger(Debugger *dbg);
  * Essa função irá calcular a altura da Arvore B seguindo o caminho mais a esquerda da Arvore até o fim(pela Arvore B ser balanceada não faz diferença qual caminho seguir)
  *
  */
-int altura(TipoApontador *Ap);
+int altura(TipoApontador Ap);
 /**
  * @brief Função responsável por Pesquisar registro em uma arvore contando numero de acessos a disco e comparações feitas
  *

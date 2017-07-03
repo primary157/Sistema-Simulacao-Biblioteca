@@ -19,7 +19,7 @@ void resetContadorPaginaRaiz(TipoPaginaDebugger* Ap){
     }
 }
 void imprimeDebugger(Debugger *dbg){
-	printf("comparacoes %u e acessos: %u, sendo %u de escrita e %u de leitura\n",
+	printf("Foram feitas %u comparações e %u acessos, sendo %u de escrita e %u de leitura\n",
 	dbg->comparacoes,
 	dbg->num_acessos_a_disco.total,
 	dbg->num_acessos_a_disco.escrita,
@@ -43,8 +43,8 @@ void incAcessos_a_disco(TipoDeAcesso tipo_de_acesso,Debugger *dbg){
 	}
 	dbg->num_acessos_a_disco.leitura++;
 }
-int altura(TipoApontador *Ap){
-	if ((*Ap)->filhos[0] != NULL) return altura(&(*Ap)->filhos[0])+1;
+int altura(TipoApontador Ap){
+	if (Ap->filhos[0] != NULL) return altura(Ap->filhos[0])+1;
 	return 1;
 }
 short PesquisaComContagem(TipoRegistro *x, TipoPaginaDebugger *Ap,Debugger *dbg){
@@ -357,7 +357,7 @@ TipoPaginaDebugger* PAGINADEBUGGER(TipoApontador Ap){
     return novoAp;
 }
 TipoApontador PAGINA(TipoPaginaDebugger *Ap){
-    TipoApontador novoAp;
+    TipoApontador novoAp = (TipoApontador)malloc(sizeof(TipoPagina));
     int i;
     if(Ap == NULL) return NULL;
     for(i = 0; i < MM; i++){
