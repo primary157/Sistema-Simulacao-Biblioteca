@@ -219,25 +219,23 @@ void ImprimeI(TipoApontador p, int nivel);
  */
 void Imprime(TipoApontador p);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por Testar consistência da Árvore B
  *
- * @param 
+ * @param p Arvore a ser testada
+ * 
+ * @param pai Arvore pai da página p
+ * 
+ * @param direita flag para sinalizar qual filho deve ser chamado
  *
- * Essa função irá:
- *
- * 1. 
- * 2. 
+ * Essa função irá Testar consistência da Árvore B, conferindo se há alguma quebra das regras da Árvore B
  */
 void TestaI(TipoApontador p, TipoChave pai, short direita);
 /**
- * @brief Função responsável por 
+ * @brief Função responsável por encapsular a função TestaI
  *
- * @param 
+ * @param p Arvore a ser testada
  *
- * Essa função irá:
- *
- * 1. 
- * 2. 
+ * Essa função encapsula a função TestaI reduzindo os numeros de parametros passados.
  */
 void Testa(TipoApontador p);
 #endif

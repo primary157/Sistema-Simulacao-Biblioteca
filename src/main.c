@@ -79,8 +79,10 @@
  *
  * Essa é a função principal e é por meio dela que serão executados os testes. Para isso essa função irá:
  *
- * 1. 
- * 2. 
+ * 1. Ler o Arquivo
+ * 2. Imprimir a Arvore resultante da leitura
+ * 3. Testar validade da Arvore
+ * 4. Rodar a interface de usuário para esse interagir com a aplicação
  */
 int main()
 {
