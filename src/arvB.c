@@ -13,9 +13,9 @@ void InicializaArvore(TipoApontador *pagina){
 }
 void InicializaRegistro(TipoRegistro *reg){
     reg->Chave = 0.0;
-    strcpy(reg->information.nome_do_autor,"");
+    //strcpy(reg->information.nome_do_autor,"");
     strcpy(reg->information.nome_do_livro,"");
-    reg->information.numero_de_exemplares = 0;
+    //reg->information.numero_de_exemplares = 0;
 }
 void Pesquisa(TipoRegistro *x, TipoApontador Ap){
     long i = 1;
@@ -67,7 +67,7 @@ void Ins(TipoRegistro Reg, TipoApontador Ap, short *Cresceu, TipoRegistro *RegRe
     while (i < Ap->tamanho_atual && Reg.Chave > Ap->registros[i-1].Chave)  i++;
 
     if (Reg.Chave == Ap->registros[i-1].Chave) {
-        printf(" Erro: Registro ja esta presente\n");
+        printf(" Erro: Registro de chave %lld ja esta presente\n",Reg.Chave);
         *Cresceu = FALSE;
         return;
     }
@@ -242,18 +242,18 @@ void Imprime(TipoApontador p){
     ImprimeI(p, n);
 }
 
-void TestaI(TipoApontador p, int pai, short direita){
+void TestaI(TipoApontador p, TipoChave pai, short direita){
     int i;
-    int antecessor = 0;
+    TipoChave antecessor = 0;
     if (p == NULL) return;
     if (p->registros[0].Chave > pai && direita == FALSE) {
-        printf("Erro: filho %12ld maior que pai %d\n", p->registros[0].Chave, pai);
+        printf("Erro: filho %12lld maior que pai %lld\n", p->registros[0].Chave, pai);
         return;
     }
     for (i = 0; i < p->tamanho_atual; i++) {
         if (p->registros[i].Chave <= antecessor) {
-            printf("Erro: irmao %ld maior que irmao a esquerda %d\n",
-                   (long)p->registros[i].Chave, antecessor);
+            printf("Erro: irmao %lld maior que irmao a esquerda %lld\n",
+                   p->registros[i].Chave, antecessor);
             return;
         }
         antecessor = p->registros[i].Chave;

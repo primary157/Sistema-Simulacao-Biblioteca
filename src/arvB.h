@@ -25,15 +25,13 @@
  * Este tipo apresenta os dados do registro que não são usados na indexação da Estrutura de Dados
  */
 typedef struct {
-	char nome_do_livro[40];
-	char nome_do_autor[20];
-	unsigned int numero_de_exemplares;
+	char nome_do_livro[200];
 }Data;
 
 /**
  * @brief Tipo Chave usado na indexação do TAD Arvore B
  */
-typedef long TipoChave;
+typedef long long int TipoChave;
 /**
  * @brief Tipo contido nas páginas da arvore B
  *
@@ -230,7 +228,7 @@ void Imprime(TipoApontador p);
  * 1. 
  * 2. 
  */
-void TestaI(TipoApontador p, int pai, short direita);
+void TestaI(TipoApontador p, TipoChave pai, short direita);
 /**
  * @brief Função responsável por 
  *

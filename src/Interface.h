@@ -9,7 +9,7 @@
 #ifndef INTERFACE_H_INCLUDED
 #define INTERFACE_H_INCLUDED
 #include "ArvoreDebugger.h"
-typedef enum State{DEFAULT,INSERTION,DELETION,SEARCH,ANALYSIS} State;
+typedef enum State{START,INSERTION,DELETION,SEARCH,ANALYSIS} State;
 /**
  * @brief Função responsável por iniciar execução da UI
  *

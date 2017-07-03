@@ -1,4 +1,23 @@
 #include "ArvoreDebugger.h"
+void resetContadorPagina(TipoPaginaDebugger* Ap){
+    int i;
+    if(Ap == NULL) return;
+    Ap->Modificada = 0;
+    Ap->Na_Mem_Principal = 0;
+    for (i = 0; i <= Ap->tamanho_atual; i++){
+        resetContadorPagina(Ap->filhos[i]);
+    }
+}
+void resetContadorPaginaRaiz(TipoPaginaDebugger* Ap){
+    int i;
+    Ap->Modificada = 0;
+    Ap->Na_Mem_Principal = 1;
+    if(Ap->filhos[Ap->tamanho_atual] != NULL){
+        for (i = 0; i <= Ap->tamanho_atual; i++){
+            resetContadorPagina(Ap->filhos[i]);
+        }
+    }
+}
 void imprimeDebugger(Debugger *dbg){
 	printf("comparacoes %u e acessos: %u, sendo %u de escrita e %u de leitura\n",
 	dbg->comparacoes,
@@ -28,11 +47,11 @@ int altura(TipoApontador *Ap){
 	if ((*Ap)->filhos[0] != NULL) return altura(&(*Ap)->filhos[0])+1;
 	return 1;
 }
-void PesquisaComContagem(TipoRegistro *x, TipoPaginaDebugger *Ap,Debugger *dbg){
+short PesquisaComContagem(TipoRegistro *x, TipoPaginaDebugger *Ap,Debugger *dbg){
     long i = 1, c_comp;
     if (Ap == NULL) {
         printf("TipoRegistro nao esta presente na arvore\n");
-        return;
+        return 0;
     }else if(!Ap->Na_Mem_Principal){ 
         incAcessos_a_disco(ACESSO_DE_LEITURA,dbg);   //contando acessos a disco
         Ap->Na_Mem_Principal = 1;                    //setando flag de leitura
@@ -45,12 +64,12 @@ void PesquisaComContagem(TipoRegistro *x, TipoPaginaDebugger *Ap,Debugger *dbg){
     incComparacoes(dbg);                    //contando comparações do prox if
     if (x->Chave == Ap->registros[i-1].Chave) { //Achou
         *x = Ap->registros[i-1];
-        return;
+        return 1;
     }
     incComparacoes(dbg);                    //contando comparações do prox if
     if (x->Chave < Ap->registros[i-1].Chave)
-        PesquisaComContagem(x, Ap->filhos[i-1],dbg);
-    else PesquisaComContagem(x, Ap->filhos[i],dbg);
+        return PesquisaComContagem(x, Ap->filhos[i-1],dbg);
+    else return PesquisaComContagem(x, Ap->filhos[i],dbg);
 }
 void InsComContagem(TipoRegistro Reg, TipoPaginaDebugger *Ap, short *Cresceu, TipoRegistro *RegRetorno,  TipoPaginaDebugger **ApRetorno,Debugger *dbg){
     long i = 1, c_comp;
@@ -253,7 +272,16 @@ void ReconstituiComContagem(TipoPaginaDebugger *ApPag, TipoPaginaDebugger *ApPai
             if (ApPai->tamanho_atual >= M)  *Diminuiu = FALSE;
         }
     }
-    if(!ApPag->Modificada){
+    
+    if(!ApPai->Modificada){         //PAGINA
+        if(!ApPai->Na_Mem_Principal){
+            ApPai->Na_Mem_Principal = 1;      //Seta flag de modificação
+            incAcessos_a_disco(ACESSO_DE_LEITURA, dbg);
+        }
+        ApPai->Modificada = 1;
+        incAcessos_a_disco(ACESSO_DE_ESCRITA, dbg);
+    }
+    if(!ApPag->Modificada){         //PAGINA
         if(!ApPag->Na_Mem_Principal){
             ApPag->Na_Mem_Principal = 1;      //Seta flag de modificação
             incAcessos_a_disco(ACESSO_DE_LEITURA, dbg);
@@ -261,7 +289,7 @@ void ReconstituiComContagem(TipoPaginaDebugger *ApPag, TipoPaginaDebugger *ApPai
         ApPag->Modificada = 1;
         incAcessos_a_disco(ACESSO_DE_ESCRITA, dbg);
     }
-    if(!Aux->Modificada){
+    if(!Aux->Modificada){           //IRMA
         if(!Aux->Na_Mem_Principal){
             Aux->Na_Mem_Principal = 1;      //Seta flag de modificação
             incAcessos_a_disco(ACESSO_DE_LEITURA, dbg);
@@ -315,7 +343,7 @@ void InsereNaPaginaComContagem(TipoPaginaDebugger *Ap, TipoRegistro Reg, TipoPag
     Ap->tamanho_atual++;
 }
 TipoPaginaDebugger* PAGINADEBUGGER(TipoApontador Ap){
-    TipoPaginaDebugger* novoAp;
+    TipoPaginaDebugger* novoAp = (TipoPaginaDebugger*)malloc(sizeof(TipoPaginaDebugger));
     int i;
     if(Ap == NULL) return NULL;
     for(i = 0; i < MM; i++){

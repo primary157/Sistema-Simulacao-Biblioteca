@@ -87,6 +87,22 @@ TipoApontador PAGINA(TipoPaginaDebugger *Ap);
  */
 void resetDebugger(Debugger *dbg);
 /**
+ * @brief Função responsável por reiniciar uma PaginaDebugger
+ *
+ * @param Ap Ponteiro para PaginaDebugger a ser reiniciada
+ *
+ * Essa função irá atribuir os valores iniciais aos contadores de PaginaDebugger e seus filhos
+ */
+void resetContadorPagina(TipoPaginaDebugger* Ap);
+/**
+ * @brief Função responsável por chamar resetContadorPagina evitando reset dos contador Na_Mem_Principal da pagina raiz
+ *
+ * @param Ap Ponteiro para PaginaDebugger a ser reiniciada
+ *
+ * Essa função irá atribuir os valores iniciais aos contadores dos filhos da PaginaDebugger Ap e seu contador Modificada
+ */
+void resetContadorPaginaRaiz(TipoPaginaDebugger* Ap);
+/**
  * @brief Função responsável por Incrementar o contador de comparações
  *
  * @param dbg Debugger que armazenará contador a ser incrementado
@@ -143,7 +159,7 @@ int altura(TipoApontador *Ap);
  * 1. Procurar um registro na arvore, contando numero de acessos a disco e numero de comparações feitas
  * 2. Atribuir ao ponteiro x o endereço do registro encontrado
  */
-void PesquisaComContagem(TipoRegistro *x, TipoPaginaDebugger *Ap,Debugger *dbg);
+short PesquisaComContagem(TipoRegistro *x, TipoPaginaDebugger *Ap,Debugger *dbg);
 /**
  * @brief Função responsável por Inserir registro a uma arvore B encapsulada com contagem de acessos ao disco e comparações
  *

@@ -85,13 +85,14 @@
 int main()
 {
   TipoApontador D;
-  
+  TipoPaginaDebugger *deb;
   LerArquivo(&D);
-
   Imprime(D);
   
-  run_ui(PAGINADEBUGGER(D));
 
+  Testa(D);
+  deb = PAGINADEBUGGER(D);
+  run_ui(deb);
   return 0;
 }
 
