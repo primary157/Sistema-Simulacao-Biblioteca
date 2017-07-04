@@ -14,11 +14,10 @@
  * @mainpage Sistema Biblioteca
  * @section Intro_Section Introduction
  * Esse trabalho baseia-se na utilização da arvore B para a solução de um **problema real**. A dupla escolheu implementar um **sistema bibliotecário**
- * onde seria possível consultar o acervo, adicionar e pegar livros.
+ * onde seria possível consultar o acervo, adicionar e remover livros.
  * 
  * O código da Árvore B foi adquirido no livro do autor _Ziviani, N_. Os dados dos livros foram adquiridos em um arquivo de extensão _XLS_ de um acervo
- * de uma **biblioteca real** dos Estados Unidos, este foi convertido para a extensão _CSV_, no padrão europeu (a qual atende bem aos requisitos do sistema,
- * por ser compatível com nomes que possuem os caracteres espaço e virgula, sem interferir na interpretação deste, que separa cada item apenas por ";").
+ * de uma **biblioteca real** dos Estados Unidos, este foi convertido para a extensão _CSV_ e depois adaptado para facilitar a leitura do arquivo de entrada
  * 
  * @section Plan_Section Fase de Planejamento
  * Nessa fase levantamos idéias para compor o desenvolvimento do sistema bibliotecário. Com as idéias em mente, nós filtramos o que seria possível e o que
@@ -55,20 +54,56 @@
  * 
  * ...também podemos citar 2 relacionados ao desenvolvimento do código:
  * 
- * 1. um dos maiores desafios foi criar a biblioteca que viria a ser a CSVManager, responsável por interpretar o arquivo de entrada no formato CSV;
+ * 1. um dos maiores desafios foi criar uma biblioteca para interpretar a sintaxe da extensão CSV, que viria a ser a CSVManager;
  * 2. outro grande desafio foi implementar a contagem de acessos à memória secundária sem realmente implementá-la.
  * 
  * ...e podemos citar um transtorno técnico inesperado:
  * 
- * 1. durante as primeiras semanas de desenvolvimento o carregador do notebook de um dos integrantes parou de funcionar o que travou o desenvolvimento por duas
- * semanas (tempo de entrega do novo carregador) porque todo o código desenvolvido na reunião do dia anterior se encontrava no notebook sem carga.
+ * 1. durante as primeiras semanas de desenvolvimento o carregador do notebook de um dos integrantes parou de funcionar o que travou o desenvolvimento por uma
+ * semana (tempo necessário para adiquirir o novo carregador) porque todo o código desenvolvido na reunião do dia anterior se encontrava no notebook sem carga.
  * 
  * @subsection Sol_Section Soluções encontradas
  * Além dos problemas relacionados a interpretação da proposta do trabalho, os problemas encontrados durante o desenvolvimento também tiveram suas soluções
- * encontradas
+ * encontradas:
+ * 
+ * 1. Para solucionar o problema da interpretação do csv, optamos por adaptar a sintaxe do arquivo de entrada, tornando-a única, em outras palavras abandonamos a
+ * sintaxe CSV
+ * 2. Para gerar a contagem de acessos o grupo procurou ajuda para a professora Gláucia e fez inúmeros debugs para encontrar onde poderia chamada a função que
+ *incrementa os contadores de acesso a disco.
  * @section Art_Section Artigos Escolhidos
+ * 
+ * 1. The Ubiquitous B-Tree \image latex The_Ubiquitous_B-Tree.pdf "The Ubiquitous B-Tree" width=\textwidth
+ * 2. Re-engineering a B-Tree Implementation Using Design Patterns \image latex Re-engineering_a_B-Tree_Implementation_Using_Design_Patterns.pdf "Re-engineering a B-Tree Implementation Using Design Patterns" width=\textwidth
+ * 3. Organization and Maintenance of Large Ordered Indexes \image latex Organization_and_Maintenance_of_Large_Ordered_Indexes.pdf "Organization and Maintenance of Large Ordered Indexes" width=\textwidth
+ * 
  * @section Tes_Section Fase de Testes
+ * 
+ * Nessa fase levantamos alguns gráficos resultantes de algumas execuções do algoritmo para diferentes valores de M.
+ * \image html altura.png
+ * \image latex altura.png "altura" width=\textwidth
+ * \image html Busca_comparacao.png
+ * \image latex Busca_comparacao.png "Busca_comparacao" width=\textwidth
+ * \image html Insercao_comparacao.png
+ * \image latex Insercao_comparacao.png "Insercao_comparacao" width=\textwidth
+ * \image html Remocao_comparacao.png
+ * \image latex Remocao_comparacao.png "Remocao_comparacao" width=\textwidth
+ * \image html Busca_acesso.png
+ * \image latex Busca_acesso.png "Busca_acesso" width=\textwidth
+ * \image html Insercao_Acesso.png
+ * \image latex Insercao_Acesso.png "Insercao_Acesso" width=\textwidth
+ * \image html Remocao_acessoDisco.png
+ * \image latex Remocao_acessoDisco.png "Remocao_acessoDisco" width=\textwidth
+ * 
  * @section Con_Section Considerações Finais
+ * Foram feitos testes com 4 chaves diferentes em cada operação. E dos testes foram aferidos o número de comparações, o número de acessos ao disco e a
+ * altura da árvore para cada valor de M.
+ * 
+ * Com base nos gráficos de número de Acesso ao disco, foi possível concluir que para um valor de M = 20 e M = 40 do número de acessos ao disco se manteve baixa
+ * variação e foram menores quando comparado aos resultados obtidos com M = 2.
+ * 
+ * Quanto ao número de comparações, houve um aumento no número de comparações a medida que o valor de M aumentava.
+ * 
+ * A altura da árvore, pelos nossos testes, podemos perceber que quanto maior o valor de M menor seria a sua altura.
  */
 #include "ArvoreDebugger.h"
 #include "ArvoreBArquivo.h"
